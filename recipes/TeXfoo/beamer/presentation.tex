@@ -1,0 +1,107 @@
+\documentclass{beamer}
+
+% don't display the beamer navbar
+\usenavigationsymbolstemplate{}
+
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+
+%Candidates: Antibes, Bergen, Berkeley, Berlin, Boadilla, Copenhagen, Darmstadt, Dresden,
+%            Frankfurt, Goettingen, Hannover, Ilmenau, JuanLesPins, Madrid, Malmoe, Marburg,
+%            Montpellier, PaloAlto, Pittsburgh, Rochester, Singapore, Szeged, Warsaw
+%
+% see: http://mike.polycat.net/gallery/beamer-themes for an overview
+\usetheme{Darmstadt}
+
+\usepackage{xmpmulti}
+%\usepackage{multimedia}
+
+\title[SHORTTITLE]{LONGTITLE}
+\subtitle{\medskip krdwrd {\tiny \cite{asn-spatz.de, krdwrd.org}}
+}
+\author[SHORTAUTHORS]{Many Name, More Name, Last Name} % {\footnotesize \texttt{<egon.stemle@uos.de>}}}
+\date{\today}
+\institute{
+Institute of Something \\
+University of Somewhere 
+}
+
+%
+%DOCUMENT begins here
+%
+\begin{document}
+
+\begin{frame}[shrink=10]
+	\titlepage
+	
+%	\begin{center}
+%		{\tiny last update on \today}
+%	\end{center}
+\end{frame}
+
+
+%%%%%%
+%
+%CONTENT comes here
+%
+
+%\part{Motivation}
+	%\frame{\partpage}
+	%\begin{frame}
+	%	\frametitle{Outline}
+	%	\tableofcontents
+	%\end{frame}
+	
+%	\input{00_introduction}
+	%\input{01_content}
+	%\input{02_content}
+
+%\part{Infrastructure}
+%	\frame{\partpage}
+%	\begin{frame}
+%		\frametitle{Outline}
+%		\tableofcontents
+%	\end{frame}
+%
+%	\input{03_content}
+
+%\part{}
+%	\frame{\partpage}
+%	
+%	\begin{frame}
+%		\frametitle{Outline}
+%		\tableofcontents
+%	\end{frame}
+%
+%
+%	\input{04_content}
+
+%
+%
+%%%
+
+%\begin{frame}{frametitle}{framesubtitle}
+%\end{frame}
+%\input{99_test}
+
+%%%
+% REFERENCES
+%
+%\part{References}
+	%\frame{\partpage}
+
+	%\section[references]{References}
+	\begin{frame}[allowframebreaks]
+		\frametitle{References}
+	
+		\setbeamertemplate{bibliography item}[text]
+		\footnotesize
+		\bibliographystyle{myalphaurl}
+		\bibliography{bibliography}
+		\nocite{*}
+	\end{frame}
+%
+%%%
+
+\end{document}
