@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+i=1
+
+while [ $i -le `wc -l filename.txt | gawk '{print $1}'` ] ; do
+    line=`head -$i filename.txt | tail -1`
+    line2=`head -$i 1.txt | tail -1`
+    echo $line $line2 >> output.txt
+	#gawk -v prefix="$line" '{print prefix,$0}' $i.txt >> output.txt
+    i=`expr $i + 1`
+done
