@@ -55,7 +55,7 @@ def traverse(snode,dstnode):
                 else:
                     src = os.path.join(snode,root[len(snode)+1:],name)
                     dst = os.path.join(dstdir,dstnode,root[len(snode)+1:],name)
-                    mkdir(dst)
+                    mkdir(os.path.join(dstdir,dstnode,root[len(snode)+1:]))
                     rsync(src,dst)
 
             except OSError:
