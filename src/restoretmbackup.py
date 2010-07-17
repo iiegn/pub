@@ -23,10 +23,11 @@ hlnkdir = sys.argv[3]
 
 def mkdir(dir):
     try:
-        os.mkdir(dir)
+        os.makedirs(dir)
         print "mkdir",dir
-    except OSError:
-        pass
+    except os.error, e:
+        if e.errno == os.errno.EEXIST: pass
+        else: raise
 
 def rsync(src,dst):
     execstrng = ['-lptgoD',src,dst]
@@ -42,9 +43,6 @@ def traverse(snode,dstnode):
         ddir = os.path.join(dstdir,dstnode,root[len(snode)+1:])
         print "#>",snode,ddir
 
-        for dir in dirs:
-            mkdir( os.path.join(ddir,dir) )
-
         for name in files:
             try:
                 statinfo = os.stat(os.path.join(root, name))
@@ -53,11 +51,11 @@ def traverse(snode,dstnode):
             
                 if (os.path.isdir(linkdir)):
                     print "#l:",root,name,":",str(link)
-                    mkdir( os.path.join(dstdir,dstnode,root[len(snode)+1:],name) )
                     traverse(linkdir,os.path.join(dstnode,root[len(snode)+1:],name))
                 else:
                     src = os.path.join(snode,root[len(snode)+1:],name)
                     dst = os.path.join(dstdir,dstnode,root[len(snode)+1:],name)
+                    mkdir(dst)
                     rsync(src,dst)
 
             except OSError:
