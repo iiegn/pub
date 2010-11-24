@@ -18,22 +18,28 @@
 
 % activate character protruding for margin kerning, 
 % i.e. try to get a 'smoother' margin
-\usepackage[activate]{pdfcprot}
+\usepackage[protrusion=true,expansion,kerning=true]{microtype}
 
 % activate some symbols, e.g. \textmusicalnote (and more 'important' ones...)
 \usepackage{textcomp}
 
 %
 % activate springer's minion and myriad font
-\pdfmapfile{+springer.map}
-\renewcommand{\sfdefault}{fmy}
-\renewcommand{\rmdefault}{fmnx}
-\renewcommand{\ttdefault}{lmtt}
+%\pdfmapfile{+springer.map}
+%\renewcommand{\sfdefault}{fmy}
+%\renewcommand{\rmdefault}{fmnx}
+%\renewcommand{\ttdefault}{lmtt}
 %
-% OR
+% XOR
 %
 % activate the Almost European computer modern font (cf. http://www.ctan.org/tex-archive/fonts/ae/)
 %\usepackage{ae}
+%
+% XOR
+%
+% activate TeX Gyre (cf. http://www.tug.dk/FontCatalogue)
+\usepackage{tgheros}
+\usepackage{tgtermes}
 
 %
 %\usepackage[right=7cm,left=2.5cm,top=2cm,bottom=3.5cm]{geometry}
