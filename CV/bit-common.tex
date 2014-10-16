@@ -1,0 +1,89 @@
+
+% style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvstyle{classic}  
+
+% color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey'
+% and 'black'
+\moderncvcolor{blue}  
+
+%% uncomment to suppress automatic page numbering for CVs longer than one page
+%\nopagenumbers{}
+
+\usepackage{ifxetex}
+\ifxetex
+  %\usepackage{xltxtra}
+  \usepackage{fontspec}
+  \usepackage{polyglossia}
+  \setmainlanguage{english}
+  % set fonts
+  %\setmainfont{FreeSerif}
+  %\setsansfont{FreeSans}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[english]{babel}
+  \usepackage{lmodern}
+\fi
+
+\usepackage[scale=0.8]{geometry}          % adjust the page margins
+
+%% if you want to change the width of the column with the dates
+%\setlength{\hintscolumnwidth}{3cm}       
+
+%% for the 'classic' style, if you want to force the width allocated to your
+%% name and avoid line breaks. be careful though, the length is normally
+%% calculated to avoid any overlap with your personal info; use this at your own
+%% typographical risks...
+%\setlength{\makecvtitlenamewidth}{10cm}  
+
+% color hyperlinks
+\definecolor{mylinkcolor}{rgb}{0.5,0.5,0.5}% for web links
+\AtBeginDocument{\hypersetup{colorlinks,urlcolor=mylinkcolor,unicode=true}}
+\usepackage{url}
+% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\footnotesize\color{mylinkcolor}\itshape}}}
+\makeatother
+% Now actually use the newly defined style.
+\urlstyle{leo}
+
+
+\iftoggle{cvlong}{
+    \usepackage{xifthen}% provides \isempty test
+    \newcommand{\cvaentry}[6]{
+        \ifthenelse{\isempty{#5}}
+        {\cventry{#1}{#2}{#3}{#4}{#5}{#6}}
+        {\cventry{#1}{#2}{#3}{#4}{\small{#5}}{#6}}
+    }
+    \newcommand{\cvbentry}[6]{
+        \ifthenelse{\isempty{#4}}
+        {\cvaentry{#1}{#2}{#3}{#4}{#5}{#6}}
+        {\cvaentry{#1}{#2}{#3}{\small{#4}}{#5}{#6}}
+    }
+    \newcommand{\cvpubentry}[6]{
+        \ifthenelse{\isempty{#3}}
+        {\cvbentry{#1}{#2}{#3}{#4}{#5}{#6}}
+        {\cvbentry{#1}{#2}{\small{#3}}{#4}{#5}{#6}}
+    }
+}{}
+
+\iftoggle{cvshort}{
+    \let\oldcventry\cventry
+    \usepackage{xifthen}% provides \isempty test
+    \renewcommand{\cventry}[6]{
+        \ifthenelse{\isempty{#5}}
+        {\oldcventry{#1}{#2}{#3}{#4}{}{}}
+        {\oldcventry{#1}{#2}{#3}{#4}{}{}}
+    }
+    \newcommand{\cvbentry}[6]{
+        \ifthenelse{\isempty{#4}}
+        {\cventry{#1}{#2}{#3}{#4}{}{}}
+        {\cventry{#1}{#2}{#3}{\small{#4}}{}{}}
+    }
+    \newcommand{\cvpubentry}[6]{
+        \ifthenelse{\isempty{#3}}
+        {\cvbentry{#1}{#2}{#3}{#4}{}{}}
+        {\cvbentry{#1}{#2}{\small{#3}}{#4}{}{}}
+    }
+}{}

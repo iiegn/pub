@@ -1,725 +1,188 @@
-\documentclass[11pt,a4paper]{moderncv}
+% possible options include font size ('10pt', '11pt' and '12pt'), paper size
+% ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and
+% 'landscape') and font family ('sans' and 'roman')
+\documentclass[10pt,a4paper,sans]{moderncv}
 
-% moderncv themes
-\moderncvtheme[blue]{classic}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
-%\moderncvtheme[green]{classic}                % idem
+\usepackage{etoolbox}
+\newtoggle{cvlong}
+\newtoggle{cvshort}
+\newtoggle{cvpub}
+\toggletrue{cvlong}
 
-% character encoding
-\usepackage[utf8]{inputenc}                   % replace by the encoding you are using
+\input{bit-common}
 
-\usepackage{url}
-%% Define a new 'leo' style for the package that will use a smaller font.
-\makeatletter
-\def\url@leostyle{%
-  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\footnotesize\color{see}\itshape}}}
-
-\makeatother
-%% Now actually use the newly defined style.
-\urlstyle{leo}
-
-% personal data (the given example is exhaustive; just give what you want)
-\firstname{egon~w.}
-\familyname{stemle}
-\title{Researcher}
-\address{European Academy of Bozen/Bolzano (EURAC)\\Viale Druso, 1}{I-39100 Bolzano (BZ)}
-\email{egon.stemle@eurac.edu}
-%\phone{+39.0471.055.129}
-\extrainfo{\url{http://www.eurac.edu/staff/estemle/}}
-%\address{Center for Mind/Brain Sciences\\University of Trento\\Palazzo Fedrigotti\\Corso Bettini 31}{I-38068 Rovereto (TN)} % for classic style
-%\email{egon.stemle@cimec.unitn.it}
-%\address{Sedanstrasse~16, 49076~Osnabr\"{u}ck, Germany}  % for casual style
-%\phone{+49.541.969-3362}
-%\email{egon.stemle@uos.de}
-%\extrainfo{\url{http://www.iiegn.de}}
-\photo[64pt]{estemle} % also optional, and the optional argument is the height the picture must be resized to
-
-%\renewcommand{\listsymbol}{{\fontencoding{U}\fontfamily{ding}\selectfont\tiny\symbol{'102}}} % define another symbol to be used in front of the list items
-
-% the ConTeXt symbol
-\def\ConTeXt{%
-  C%
-  \kern-.0333emo%
-  \kern-.0333emn%
-  \kern-.0667em\TeX%
-  \kern-.0333emt}
-
-% slanted small caps (only with roman family; the sans serif font doesn't exists :-()
-%\usepackage{slantsc}
-%\DeclareFontFamily{T1}{myfont}{}
-%\DeclareFontShape{T1}{myfont}{m}{scsl}{ <-> cork-lmssqbo8}{}
-%\usefont{T1}{myfont}{m}{scsl}Testing the font
-
-% command and color used in this document, independently from moderncv 
-\definecolor{see}{rgb}{0.5,0.5,0.5}% for web links
-\newcommand{\up}[1]{\ensuremath{^\textsf{\scriptsize#1}}}% for text subscripts
+%\usepackage{multibib}
+%\newcites{article}{{Articles}}
 
 %----------------------------------------------------------------------------------
-%            content
+% personal data 
+%----------------------------------------------------------------------------------
+\input{bit-selfhead}
+
+%----------------------------------------------------------------------------------
+% content
 %----------------------------------------------------------------------------------
 \begin{document}
-\maketitle
+\makecvtitle
 
+\section*{}
+\input{bit-selfgloss}
 
-\section{}
-\input{self}
-
-
-\section{Education}
-    \cventry{02.2006 --\\-- 03.2009}{MSc in Cognitive Science}
-        {with distinction}
-        {}{University
-        of Osnabr\"{u}ck, Germany}{Majors: \emph{Linguistics and Computational
-        Linguistics} and \emph{Artificial Intelligence}, One Year Study Project:
-        Analysis and Structure of Aviation Documents (ASADO),
-        [\url{http://www.cogsci.uni-osnabrueck.de/~ASADO}]. }
-    \cventry{03.2002 --\\-- 09.2002}{Semester abroad}{ILLC (Institute for
-        Logic, Language and Computation)}{}{University of Amsterdam, The
-        Netherlands}{}
-    \cventry{10.2000 --\\-- 01.2006}{BSc in Cognitive Science}{}{}{University
-        of Osnabr\"{u}ck, Germany}{}
-    \cventry{12.1998 --\\-- 07.2000}{Apprenticeship as Travel
-        Agent}{}{}{WORLDWIDE Touristik, N\"{u}rnberg, Germany}{}
-    \cventry{06.1997}{Abitur}{}{}{Sigmund-Schuckert-Gymnasium, N\"{u}rnberg,
-        Germany}{}
-\closesection{}
-
-
-\section{Master's Thesis}
-    \cvitem{title}{\emph{Hybrid Sweeping: Streamlined Perceptual
-        Structured-Text Refinement}}
-    \cvitem{supervisors}{Prof.~Dr.~Stefan Evert and Prof.~Dr.~Peter K\"{o}nig}
-    \cvitem{description}{\small Development of a perceptually driven content
-        extraction architecture for Web pages -- exemplified by a Web page cleaning
-        system.}
-\closesection{}
-
-
-%\section{Bachelor's Thesis}
-%    \cvitem{title}{\emph{A Flexible Integration of CL Techniques for Analyzing
-%        Linguistic Units in Large Document Repositories}}
-%    \cvitem{supervisors}{PD Petra Ludewig and PD Helmar Gust}
-%    \cvitem{description}{\small The basic computational linguistic processing
-%        stages from raw text documents towards a linguistically enriched
-%        annotation for documents are presented.}
-%\closesection{}
-%
-%
-%\pagebreak
 \section{Research and Professional Experience}
-	%\cventry{date}{main title}{three}{four}{five}{six}
-	\cventry{since 02.2012}
-        {Researcher}
-        {Institute for Specialised Communication and Multilingualism at the
-        European Academy of Bozen/Bolzano (EURAC) [\href{http://www.eurac.edu}
-        {$\rightarrow$EURAC}]}
-        {}{}{}
-	\cventry{04.2009 --\\-- 01.2012}
-        {Research Fellow}
-        {LiveMemories sponsored grant, financed by the Provincia Autonoma of
-        Trento, for research activities at the Center for Mind/Brain Sciences
-        (CIMeC) of the University of Trento [\href{http://www.livememories.org}
-        {$\rightarrow$LiveMemories},
-        \href{http://www.cimec.unitn.it}{$\rightarrow$CIMeC}]}
-        {}{}{}
-    \cventry{since 2009}
-        {Technology Consultant and Shareholder}
-        {Whitematter Labs [\url{http://whitematterlabs.com}]}
-        {\small provider of neuroscientific technologies for marketers}
-        {}{}
-    \cventry{04.2008 --\\-- 2010}
-        {Project Member}
-        {GoodGaze [\url{http://www.goodgaze.com}]}
-        {\small research project to predict where people will look on Web pages}
-        {}{}
-    \cventry{2008}
-        {Freelancer}
-        {ontoprise GmbH [\url{http://www.ontoprise.de}]}
-        {\small Integrating in-house technology with IBM's OmniFind;
-            Feasibility Study: evaluate to which extent very specific
-            information extraction from large web data collections combined with
-            semi-automatic cleaning is technically feasible, what benefits and
-            efforts are to be expected -- while also considering external
-        alternatives}
-        {}{}
-    \cventry{10.2006 --\\-- 03.2008}
-        {Research Participant}
-        {DAAD funded research project (Project-linked exchange of academics and
-        scientists, PPP)}
-        {\small collaboration between the Institute of Cognitive Science,
-        U.~Osnabr\"{u}ck, Germany, the CNRS UMR 8163 (Savoirs, Textes,
-        Langages), U.~of Lille (III), France, and the Departament de
-        Traducci\'{o} i Filologia, U.~Barcelona (Pompeu Fabra), Spain}
-        {\small title: Reference to Abstract Objects in Natural Language
-        (OntoRef) [\url{http://parles.upf.es/glif/pub/abstract/index.html}]}
-        {}
-    \cventry{04.2006 --\\-- 03.2008}
-        {Research Assistant}
-        {Institute of Applied Informatics and Formal Description Methods,
-        University of Karlsruhe, Germany} {\small Knowledge Management Research
-        Group}
-        {[\url{http://www.aifb.uni-karlsruhe.de/Forschungsgruppen/WBS/english}]}
-        {Maintenance and development of software and scientific counsel;
-        e.g.~evaluating CL tools for OmniFind+UIMA and hooking them together.}
-    \cventry{08.2004 --\\-- 09.2005}
-        {Research Participant}
-        {cooperation between the Universities of Osnabr\"{u}ck and Hildesheim,
-        and the aircraft manufacturer AIRBUS}
-        {\small title: ASADO -- project to research methodologies and
-        technologies to analyze and structure the huge amount of documentation
-        produced during aircraft construction}
-        {}{}
-    \cventry{08.2003 --\\-- 12.2003}
-        {Student Assistant}
-        {Institute of Cognitive Science, University of Osnabr\"{u}ck, Germany}
-        {\small Artificial Intelligence Research Group}
-        {[\url{http://www.cogsci.uni-osnabrueck.de/~ai/milca.html}]}
-        {Maintenance and development of software for the MiLCA (Media intensive
-        learning units for courses in computational linguistics) project.}
-    \cventry{10.2001 --\\-- 03.2009}
-        {System Administrator}
-        {Institute of Cognitive Science, University of Osnabr\"{u}ck, Germany}
-        {}
-        {}
-        {Maintenance of computer hardware and software, server administration
-        (Web Services, Databases, File Sharing, Printing, Mail, Calendaring,
-        (D)VCS, CMS), user support; assisting work groups in making strategic
-        decisions about hardware and software.}
-    %\cventry{11.1997 --\\-- 11.1998}
-    %    {Alternative Civilian Service}
-    %    {Alten-, Wohn- und Pflegeheim Reichelsdorf, and Fahrdienst f\"{u}r
-    %    Behinderte gGmbH; N\"{u}rnberg, Germany}
-    %    {}{}{}
-\closesection{}
+\input{bit-experience}
 
+%\pagebreak
+\section{Education}
+\input{bit-edu}
 
 %\pagebreak
 \section{Teaching Experience}
-    \cventry{2009 -- 2011\\(yearly)}
-        {Lecture on Web Corpora}
-        {Course in text processing}
-        {offered to students of the School of Humanities and Philosophy, of the
-        International Master in Cognitive Science and of the Master in Human
-        Language Technologies and Interfaces}
-        {coordinated by Marco Baroni, University of Trento}
-        {}
-    \cventry{10.2003 --\\-- 02.2006\\(every other semester)}
-        {Artificial Intelligence Tutor}
-        {Methods of Artificial Intelligence}
-        {Second year Cognitive Science class}
-        {Institute of Cognitive Science, University of Osnabr\"{u}ck}
-        {Weekly tutoring of the lecture material, assessment of programming
-        assignments, homework corrections, and exam preparation.}	
-    \cventry{04.2003 --\\-- 07.2006\\(every other semester)}
-        {Computational Linguistics Tutor}
-        {Introduction to Computational Linguistics}
-        {First year Cognitive Science class}
-        {Institute of Cognitive Science, University of Osnabr\"{u}ck}
-        {Weekly tutoring of the lecture material, preparation and assessment of
-        programming assignments, homework corrections, and exam preparation.}
-    \cventry{10.2002 --\\-- 02.2003}
-        {Theoretical Neuroscience Tutor}
-        {Introduction to Theoretical Neuroscience}
-        {Second year Cognitive Science class}
-        {Institute of Cognitive Science, University of Osnabr\"{u}ck}
-        {Weekly tutoring of the lecture material, homework corrections.}
-    \cventry{10.2001 --\\-- 02.2002}
-        {Computer Science Tutor}
-        {Algorithms}
-        {First year Computer Science class}
-        {Computer Science Department, University of Osnabr\"{u}ck}
-        {Weekly oral assessment of 10 2-people groups and homework corrections.}
-\closesection{}
-
-
-
-%\nocite{*}
-%\bibliographystyle{plain}
-%\bibliography{CV.bib}
-% see CV_en.bbl and modify cventries accordingly...
-
+\input{bit-teaching}
 
 %\pagebreak
 \section{Publications}
-    %\cventry{}
-    %    {}
-    %    {\small}
-    %    {\small}
-    %    {\small}
-    %    {}
-    %
+\input{bit-pubs}
 
-
-    %\cventry{06.2014 \\ (Accepted and Retracted)}
-    %    {Michel Genereux, Egon Stemle, Lionel Nicolas, Verena Lyding}
-    %    {\small Correcting OCR errors for German in Fraktur font}
-    %    {\small Semantic technologies for research in the humanities and
-    %    social sciences (STRiX-2014)}
-    %    {\small Gothenburg, Sweden, on November 24-25, 2014}
-    %    {}
-    %
-
-    %\cventry{11.2013 \\ (Submitted)}
-    %    {Lionel Nicolas, Egon Stemle, Aivars Glaznieks, Andrea Abel}
-    %    {A Generic Data Workflow for Building Annotated Text Corpora}
-    %    {proceedings of the conference "Compiling and using learner corpora to
-    %    teach and assess productive and interactive skills in foreign
-    %    languages at university level"
-    %    Peter Lang (Linguistic Insights series)
-    %
-
-    \cventry{(in Preparation)}
-        {Egon Stemle, Alexander Onysko}
-        {\small The role of transfer in automated L1 identification of English learner essays}
-        {\small in \emph{Peukert, Hagen (ed.): Transfer Effects in Multilingual Language Development}}
-        {\small John Benjamins, Amsterdam \& Phildadelphia}
-        {}
-    
-    \cventry{(in Preparation)} 
-        {Aivars Glaznieks, Andrea Abel, Verena Lyding, Lionel Nicolas, Egon
-        Stemle}
-        {\small Establishing a Standardised Procedure for Building Learner
-        Corpora – a Response to Demands and Suggestions of Users}
-        {\small Proceedings of Learner Language, Learner Corpora 2012
-        (LLLC2012), Oct 5-6, University of Oulu, Finland}
-        {\small Tarja Nikula, Sauli Takala and Sabine Ylönen (eds.). Apples -
-        Journal of Applied Language Studies}
-        {}
-
-    \cventry{(in Preparation)} 
-        {Aivars Glaznieks, Egon Stemle}
-        {\small Challenges of building a CMC corpus for analyzing writer's
-        style by age: The DiDi project} 
-        {\small Special Issue of Journal of Language Technology and
-        Computational Linguistics: Building and annotating corpora of
-        computer-mediated discourse. Issues and Challenges at the Interface of
-        Corpus and Computational Linguistics}
-        {\small Michael Beißwenger, Nelleke Oostdijk, Angelika Storrer \& Henk van den Heuvel (eds.)}
-        {}
-
-    %\cventry{09.2014 \\ (Accepted)}
-    %    {Michel Genereux, Egon Stemle, Lionel Nicolas, Verena Lyding}
-    %    {\small Correcting OCR errors for German in Fraktur font}
-    %    {\small CLICit - The first Italian Computational Linguistics Conference}
-    %    {\small Dec 9-10, Pisa, Italy}
-    %    {}
-
-    \cventry{06.2014}
-        {Verena Lyding, Lionel Nicolas, Egon Stemle}
-        {\small 'interHist' -- an interactive visual interface for corpus exploration}
-        {\small for {\em Proceedings of the 9th Conference on International
-        Language Resources and Evaluation (LREC'14)}}
-        {\small May 26-31, Reykjavik, Iceland}
-        {\small European Language Resources Association (ELRA)}
-
-    \cventry{06.2014}
-        {Andrea Abel, Aivars Glaznieks, Lionel Nicolas, Egon Stemle}
-        {\small KoKo: An L1 learner corpus for German}
-        {\small for {\em Proceedings of the 9th Conference on International
-        Language Resources and Evaluation (LREC'14)}}
-        {\small May 26-31, Reykjavik, Iceland}
-        {\small European Language Resources Association (ELRA)}
-
-    \cventry{04.2014}
-        {Verena Lyding, Egon Stemle, Claudio Borghetti, Marco Brunello, Sara
-        Castagnoli, Felice Dell Orletta, Henrik Dittmann, Alessandro Lenci, Vito
-        Pirrelli}
-        {The PAIS\`{A} Corpus of Italian Web Texts}
-        {\small in {\em Proceedings of the 9th Web as Corpus Workshop (WAC-9)}}
-        {\small Workshop at the 14th Conference of the European Chapter of the
-        Association for Computational Linguistics (EACL)}
-        {\small Apr 26, Gothenburg, Sweden}
-        {}
-
-    %\cventry{06.2013 \\ (Article)}
-    %    {Egon Stemle, Alexander Onysko}
-    %    {Language as a Detective Story}
-    %    {Was morgen sein könnte, Academia no.64}
-    %    {EURAC, Bolzano/Bozen, IT}
-    %    {p.24-25}
-
-    % RANLP-2013 Young Researcher Award
-    \cventry{09.2013}
-        {Lionel Nicolas, Egon~W.~Stemle, Klara Kranebitter, Verena Lyding}
-        {\small High-accuracy phrase translation acquisition through
-        battle-royale selection}
-        {\small Proceedings of Recent Advances in Natural Language Processing,
-        RANLP 2013}
-        {\small Sep 7-13, Hissar, Bulgaria}
-        {}
-
-    %07.2013
-    %    Tine Melzer, Egon Stemle 
-    %    Ludwig \& Gertrude
-    %    Supplement to the PhD research Ludwig \& Gertrude Meeting in Language,
-    %    Faculty of Arts, Planetary Collegium, M-node, 2013
-
-    \cventry{07.2013}
-        {Stefan Evert, Egon Stemle, Paul Rayson (eds.)}
-        {\small Proceedings of the 8th Web as Corpus Workshop (WAC-8)}
-        {\small Workshop at the seventh international Corpus Linguistics conference (CL2013)}
-        {\small Jul 22, Lancaster, UK}
-        {}
-
-    %\cventry{06.2013 \\ (Interview)}
-    %    {Egon Stemle}
-    %    {Mi piace ;-)}
-    %    {Was übrig bleibt\ldots, Academia no.62}
-    %    {EURAC, Bolzano/Bozen, IT}
-    %    {p.12-13}
-    %
-    %\cventry{06.2013} \\ (Interview)}
-    %    {Egon Stemle}
-    %    {\small A nuie Dimension in dor Sprochforschung}
-    %    {\small EURAC Activity Report 2012/13}
-    %    {\small EURAC, Bolzano/Bozen, IT}
-    %    {}
-
-    \cventry{06.2013}
-        {Klara Kranebitter, Egon~W.~Stemle}
-        {\small Constructing concept relation maps to support building concept
-        systems in comparative legal terminology}
-        {\small Terminology \& Ontology: Theories and applications (TOTh'2013)}
-        {\small Jun 6-7, Chamb\'{e}ry, France}
-        {}
-
-    \cventry{09.2012}
-        {Lionel Nicolas, Egon~W.~Stemle, Klara Kranebitter}
-        {\small Towards high-accuracy bilingual phrase acquisition from parallel corpora}
-        {\small in {\em Proceedings of KONVENS 2012} (LexSem 2012 workshop), Vienna, Austria}
-        {\small \"{O}sterreichische Gesellschaft f\"{u}r Artificial Intelligence (\"{O}GAI)}
-        {}
-    
-    \cventry{07.2012}
-        {Francesca Bonin, Fabio Cavulli, Massimo Poesio, Egon~W.~Stemle}
-        {\small Annotating Archaeological Texts: An Example of
-        Domain-Specific Annotation in the Humanities}
-        {\small in {\em Proceedings of the Sixth Linguistic Annotation
-        Workshop, ACL2012}, Jeju, Republic of Korea}
-        {\small Association for Computational Linguistics}
-        {}
-
-    \cventry{11.2011}
-        {Asif Ekbal, Francesca Bonin, Sriparna Saha, Egon Stemle, Eduard Barbu,
-        Fabio Cavulli, Christian Girardi, Massimo Poesio}
-        {\small Rapid Adaptation of NE Resolvers for Humanities Domains using
-        Active Annotation}
-        {\small in {\em Journal for Language Technology and Computational Linguistics (JLCL)},
-        26(2):39--51, 2011}
-        {}
-        {}
-
-    \cventry{11.2011}
-        {Massimo Poesio, Eduard Barbu, Francesca Bonin, Fabio Cavulli, Asif
-        Ekbal, Egon Stemle, Christian Girardi}
-        {\small The Humanities Research Portal: Human Language Technology Meets
-        Humanities Publication Archives}
-        {\small in {\em SDH2011 - Supporting Digital Humanities: Answering the
-        unaskable}, Copenhagen, DK}
-        {}
-        {}
-
-    \cventry{07.2011}
-        {Brian Murphy, Egon~W.~Stemle}
-        {\small PaddyWaC: A Minimally-Supervised Web-Corpus of Hiberno-English}
-        {\small in {\em Proceedings of the First Workshop on Algorithms and
-        Resources for Modelling of Dialects and Language Varieties
-        (DIALECTS2011)}, Edinburgh, Scotland, UK}
-        {\small Association for Computational Linguistics}
-        {}
-
-    \cventry{06.2011}
-        {Massimo Poesio, Eduard Barbu, Egon~W.~Stemle, Christian Girardi}
-        {Structure-Preserving Pipelines for Digital Libraries}
-        {\small in {\em Proceedings of the 5th ACL-HLT Workshop on Language
-        Technology for Cultural Heritage, Social Sciences, and Humanities
-        (LaTeCH 2011)}, Portland, OR, USA}
-        {\small Association for Computational Linguistics}
-        {}
-
-    \cventry{05.2010}
-        {Kepa~J. Rodr{\'i}guez, Francesca Delogu, Jannick Versley,
-        Egon~W.~Stemle, Massimo Poesio} {Anaphoric Annotation of Wikipedia
-        and Blogs in the Live Memories Corpus}
-        {\small in {\em Proceedings of the 7th Conference on International
-        Language Resources and Evaluation (LREC'10)}, Valletta, Malta}
-        {\small European Language Resources Association (ELRA)}
-        {}
-
-    \cventry{09.2009}
-        {Johannes~M.~Steger, Egon~W.~Stemle}
-        {{KrdWrd} -- The Architecture for unified Processing of Web Content}
-        {\small in {\em Proceedings of the 5th Web as Corpus Workshop (WAC5)}}
-        {\small Pre-SEPLN Workshop, Donostoia-San Sebasti{\'a}n, Basque
-        Country, Spain}
-        {[\url{http://www.sigwac.org.uk/raw-attachment/wiki/WAC5/WAC5_proceedings.pdf}]}
-
-    \cventry{09.2007}
-        {Daniel Bauer, Judith Degen, Xiaoye Deng, Priska Herger, Jan Gasthaus,
-        Eugenie Giesbrecht, Lina Jansen, Christin Kalina, Thorben Kr{\"u}ger,
-        Robert M{\"a}rtin, Martin Schmidt, Simon Scholler, Johannes Steger,
-        Egon Stemle, Stefan Evert}
-        {FIASCO: Filtering the Internet by automatic Subtree Classification,
-        Osnabr{\"u}ck}
-        {\small in {\em Building and Exploring Web Corpora. Proceedings of the
-        3rd Web as Corpus Workshop, incorporating CLEANEVAL (WAC3-2007)}}
-        {\small Presses universitaires de Louvain}
-        {[\url{http://purl.org/stefan.evert/PUB/BauerEtc2007_FIASCO.pdf}]}
-    
-   \cventry{07.2007}
-        {Sebastian Blohm, Philipp Cimiano, Egon Stemle}
-        {Harvesting Relations from the Web - Quantifiying the Impact of
-        Filtering Functions}
-        {\small in {\em Proceedings of the 22nd Conference on Artificial
-        Intelligence (AAAI-07)}}
-        {\small Association for the Advancement of Artificial Intelligence
-        (AAAI)}
-        {[\url{http://www.aifb.uni-karlsruhe.de/WBS/seb/publications/pronto-aaai07.pdf}]}
-
-    \cventry{11.2005}
-        {Martin Bleichner, Eugenie Giesbrecht, Helmar Gust, Eva-Maria Leicht,
-        Petra Ludewig, Sabine M{\"o}ller, Wiebke M{\"u}ller, Martin Schmidt,
-        Moritz Stefaner, Egon Stemle, Katja Wilke}
-        {ASADO: The Analysis and Structuring of Aviation Documents -- Final Report}
-        {\small Technical Report, Institute of Cognitive Science at the
-        University of Osnabr{\"u}ck and Institute of Applied Linguistics at the
-        University of Hildesheim}
-        {}
-        {[\url{http://iiegn.de/static/doc/bleichneretal2005.pdf}]}
-
-    %\cventry{10.2005}
-    %    {Egon Stemle}
-    %    {A Flexible Integration of CL Techniques for Analyzing Linguistic Units in Large Document Repositories (unpublished)}
-    %    {\small Cognitive Science BSc Thesis}
-    %    {\small Institute of Cognitive Science, University of Osnabr\"{u}ck, Germany}
-    %    {[\url{http://iiegn.de/static/doc/stemle2005.pdf}]}
-\closesection{}
-
-
-\pagebreak
-\section{Talks}
-    \cventry{09.2014 \\ (Accepted)}
+%\pagebreak
+\section{Presentations}
+    \cvpubentry{09.2014 \\ (Accepted)}
         {Michel Genereux, Egon Stemle, Lionel Nicolas, Verena Lyding}
-        {\small Correcting OCR errors for German in Fraktur font}
-        {\small CLICit - The first Italian Computational Linguistics Conference}
-        {\small Dec 9-10, Pisa, Italy}
+        {Correcting OCR errors for German in Fraktur font}
+        {CLICit - The first Italian Computational Linguistics Conference}
+        {Dec 9-10, Pisa, Italy}
         {}
 
-    \cventry{09.2014 \\ (Accepted)}
-        {Jennifer-Carmen Frey, Aivars Glaznieks, Egon Stemle}
-        {\small Collecting language data of non-public social media profiles}
-        {\small Natural Language Processing for Computer-Mediated
-        Communication / Social Media (NLP4CMC)}
-        {\small Pre-conference workshop at KONVENS2014, Hildesheim/Germany, October 6, 2014}
-        {}
+    %\cvpubentry{10.2014}
+    %    {Jennifer-Carmen Frey*, Aivars Glaznieks, Egon Stemle}
+    %    {Collecting language data of non-public social media profiles}
+    %    {Natural Language Processing for Computer-Mediated
+    %    Communication / Social Media (NLP4CMC)}
+    %    {Pre-conference workshop at KONVENS2014, Oct 6, Hildesheim, Germany}
+    %    {}
     
-    \cventry{08.04.2014}
+    \cvpubentry{08.04.2014}
         {Alexander Onysko*, Egon W.~Stemle*}
-        {\small Automated L1 identification in English learner essays and its
+        {Automated L1 identification in English learner essays and its
         implications for language transfer}
-        {\small Work in Progress}
-        {\small Kompetenzzentrum Sprachen, Freie Univeristät Bozen, Bozen, IT}
+        {Work in Progress}
+        {Kompetenzzentrum Sprachen, Freie Univeristät Bozen, Bozen/Bolzano, Italy}
         {}
 
-    \cventry{02.2014}
+    \cvpubentry{02.2014}
         {Aivars Glaznieks*, Egon W.~Stemle, Jennifer Frey}
-        {\small Nützlichkeit der Normalisierung von Dialekt für automatische
+        {Nützlichkeit der Normalisierung von Dialekt für automatische
          Verarbeitungsschritte. Erfahrungen aus dem Projekt DiDi}
-        {\small 7th workshop of the DFG scientific network Empirikom: Social
+        {7th workshop of the DFG scientific network Empirikom: Social
         Media Corpora for the eHumanities: Standards, Challenges, and
         Perspectives}
-        {\small Feb 19–21, TU Dortmund University, Germany}
+        {Feb 19–21, TU Dortmund University, Germany}
         {}
 
-    \cventry{22.11.2013}
+    \cvpubentry{22.11.2013}
         {Andrea Abel, Aivars Glazniek, Egon~W.~Stemle}
-        {\small Automatische Annotation von Schülertexten -- Herausforderungen
+        {Automatische Annotation von Schülertexten -- Herausforderungen
         und Lösungsvorschläge am Beispiel des Projekts KoKo}
-        {\small Arbeitsgruppe: Korpusbasierte Linguistik} 
-        {\small Workshop at the 40.~Österreichische Linguistiktagung, Nov
+        {Arbeitsgruppe: Korpusbasierte Linguistik} 
+        {Workshop at the 40.~Österreichische Linguistiktagung, Nov
         22-24, Universität Salzburg, Salzburg, Austria}
         {}
 
-    \cventry{11.2013}
-        {Verena Lyding*, Claudia Borghetti*, Henrik Dittmann, Lionel Nicolas, Egon Stemle}
-        {\small Open Corpus Interface for Italian Language Learning}
-        {\small 6th edition of the International Conference ICT for Language Learning}
-        {\small Nov 14-15, Florence, Italy}
-        {}
+    %\cvpubentry{11.2013}
+    %    {Verena Lyding*, Claudia Borghetti*, Henrik Dittmann, Lionel Nicolas, Egon Stemle}
+    %    {Open Corpus Interface for Italian Language Learning}
+    %    {6th edition of the International Conference ICT for Language Learning}
+    %    {Nov 14-15, Florence, Italy}
+    %    {}
 
-    \cventry{23.09.2013}
+    \cvpubentry{23.09.2013}
         {Aivars Glazniek, Egon~W.~Stemle}
-        {\small Herausforderungen bei der automatischen Verarbeitung von dialektalen IBK-Daten}
-        {\small GSCL-Workshop \emph{Verarbeitung und Annotation von Sprachdaten aus
+        {Herausforderungen bei der automatischen Verarbeitung von dialektalen IBK-Daten}
+        {GSCL-Workshop \emph{Verarbeitung und Annotation von Sprachdaten aus
         Genres internetbasierter Kommunikation}}
-        {\small Workshop at the International Conference of the German Society
+        {Workshop at the International Conference of the German Society
         for Computational Linguistics and Language Technology, Sep 23,
         Darmstadt, Germany}
         {}
 
-    \cventry{24.06.2013}
+    \cvpubentry{24.06.2013}
         {Egon~W.~Stemle, Verena Lyding}
-        {\small The future of BootCaT: A Creative Commons License filter}
-        {\small BootCaTters of the world unite! (BOTWU), A workshop (and a
+        {The future of BootCaT: A Creative Commons License filter}
+        {BootCaTters of the world unite! (BOTWU), A workshop (and a
         survey) on the BootCaT toolkit}
-        {\small Jun 24, Department of Interpreting and Translation, University
+        {Jun 24, Department of Interpreting and Translation, University
         of Bologna Forl\`{i}, Italy}
         {}
 
-    \cventry{05.2013}
-        {Lionel Nicolas*, Aivars Glaznieks, Egon~W.~Stemle, Andrea Abel}
-        {\small Compiling and using a German learner corpus: the Koko project}
-        {\small Compiling and Using Learner Corpora to teach and assess
-        productive and interactive skills in foreign languages at university
-        level - Learner Corpora 2013}
-        {\small May 16-17, Padova, Italy}
-        {}
+    %\cvpubentry{05.2013}
+    %    {Lionel Nicolas*, Aivars Glaznieks, Egon~W.~Stemle, Andrea Abel}
+    %    {Compiling and using a German learner corpus: the Koko project}
+    %    {Compiling and Using Learner Corpora to teach and assess
+    %    productive and interactive skills in foreign languages at university
+    %    level - Learner Corpora 2013}
+    %    {May 16-17, Padova, Italy}
+    %    {}
 
-    \cventry{03.2013}
+    \cvpubentry{03.2013}
         {Aivars Glaznieks*, Egon Stemle, Andrea Abel, Verena Lyding}
-        {\small Herausforderungen bei der Erstellung eines L1-Lernerkorpus:
+        {Herausforderungen bei der Erstellung eines L1-Lernerkorpus:
         Lösungsvorschläge aus dem Projekt "KoKo"}
-        {\small DGfS 2013 Workshop on Modellierung nicht-standardisierter
+        {DGfS 2013 Workshop on Modellierung nicht-standardisierter
         Schriftlichkeit}
-        {\small Workshop at the 35th Annual Conference of the German Linguistic
+        {Workshop at the 35th Annual Conference of the German Linguistic
         Society (DGfS 2013), Mar 12-15, Potsdam, Germany}
         {}
 
-    \cventry{03.2013}
+    \cvpubentry{03.2013}
         {Verena Lyding*, Lionel Nicolas, Egon Stemle}
-        {\small interHist -- an interactive visualization for statistically
+        {interHist -- an interactive visualization for statistically
         enhanced query structures}
-        {\small DGfS 2013 Workshop on the Visualization of Linguistic Patterns}
-        {\small Workshop at the 35th Annual Conference of the German Linguistic
+        {DGfS 2013 Workshop on the Visualization of Linguistic Patterns}
+        {Workshop at the 35th Annual Conference of the German Linguistic
         Society (DGfS 2013), Mar 12-15, Potsdam, Germany}
         {}
 
-    \cventry{13.02.2013}
+    \cvpubentry{13.02.2013}
         {Egon~W.~Stemle, Aivars Glaznieks}
-        {\small Technical Aspects in Harvesting Data from Social Network Sites}
-        {\small International workshop: Building Corpora of Computer-Mediated
+        {Technical Aspects in Harvesting Data from Social Network Sites}
+        {International workshop: Building Corpora of Computer-Mediated
         Communication: Issues, Challenges, and Perspectives}
-        {\small Feb 13-15, Department of German Language and Literature, Faculty of
-        Culture Studies, TU Dortmund University (Germany)}
+        {Feb 13-15, Department of German Language and Literature, Faculty of
+        Culture Studies, TU Dortmund University, Germany}
         {}
 
-    \cventry{02.2013}
+    \cvpubentry{02.2013}
         {Aivars Glaznieks*, Egon~W.~Stemle}
-        {\small The Project DIDI. Writing on Social Network Sites -- A
+        {The Project DIDI. Writing on Social Network Sites -- A
         Corpus-based Observation of the Current Language Use in South Tyrol,
         with Particular Consideration of the Writers’ Age} 
-        {\small International workshop: Building Corpora of Computer-Mediated
+        {International workshop: Building Corpora of Computer-Mediated
         Communication: Issues, Challenges, and Perspectives}
-        {\small Feb 13-15, Department of German Language and Literature, Faculty of
-        Culture Studies, TU Dortmund University (Germany)}
+        {Feb 13-15, Department of German Language and Literature, Faculty of
+        Culture Studies, TU Dortmund University, Germany}
         {}
 
-    \cventry{13.07.2012 \\ (Plenary Talk)}
+    \cvpubentry{13.07.2012 \\ (Plenary Talk)}
         {Egon~W.~Stemle}
         {Web Corpus Creation and Cleaning}
-        {\small Computer Applications in Linguistics: Student Research Workshop (CSRW2012)}
-        {\small English Corpus Linguistics Group at the Institute of
-        Linguistics and Literary Studies, Technische Universit\"{a}t Darmstadt}
+        {Computer Applications in Linguistics: Student Research Workshop (CSRW2012)}
+        {English Corpus Linguistics Group at the Institute of
+        Linguistics and Literary Studies, Technische Universit\"{a}t Darmstadt, Germany}
         {}
 
-    \cventry{04.05.2012 \\ (Impulsreferat)}
+    \cvpubentry{04.05.2012 \\ (Impulsreferat)}
         {Egon~W.~Stemle, Verena Lyding, Lionel Nicolas}
-        {\small On visual Approaches towards Corpus Exploration}
-        {\small 3rd Workshop of the Academic Network on "Internet Lexicography"}
-        {\small}
+        {On visual Approaches towards Corpus Exploration}
+        {3rd Workshop of the Academic Network on "Internet Lexicography"}
+        {EURAC research, Bozen/Bolzano, Italy}
         {}
-
-\closesection{}
-
 
 %\pagebreak
-
 \section{Workshops and Conferences}
-    % PC for NLP4CMC
-    % PC for WAC-9
-
-    \cventry{07.2013}
-        {Organising Committee and Programme Committee}
-        {Workshop}
-        {8th Web as Corpus Workshop (WAC-8)}
-        {[\url{http://sigwac.org.uk/wiki/WAC8}]}
-        {Workshop day at the seventh international Corpus Linguistics
-        conference (CL2013), Lancaster University, UK}
-
-	\cventry{09.2006}
-        {Student Worker at OTT06}
-        {Workshop}
-        {Ontologies in Text Technology: Approaches to Extract Semantic
-        Knowledge from Syntactic Information.}
-        {[\url{http://www.cogsci.uni-osnabrueck.de/~ott06}]}
-        {jointly organized by the Institute of Cognitive Science at the
-        University of Osnabr\"{u}ck and the project C2 of the distributed
-        DFG-research group Text Technological Modelling of Information}
-
-	\cventry{06.2006}
-        {Student Worker at QITL-2}
-        {Workshop}
-        {Second Workshop on Quantitative Investigations in Theoretical
-        Linguistics.}
-        {[\url{http://www.cogsci.uni-osnabrueck.de/~qitl}]}
-        {organized by the Computational Linguistics Group at the Institute of
-        Cognitive Science}
-
-	\cventry{09.2003}
-        {Student Worker at EuroCogSci 2003}
-        {Conference}
-        {[\url{http://www.eurocogsci03.uni-osnabrueck.de}]}{First European
-        Cognitive Science Meeting.}
-        {jointly organized by the Cognitive Science Society and the German
-        Cognitive Science Society}
-\closesection{}
-
+\input{bit-worksnconfs}
 
 %\pagebreak
 \section{Administrative Experience}
-    \cventry{since 08.2012}
-        {Secretary of the Special Interest Group on the Web as Corpus (SIGWAC)}
-        {}
-        {SIG of the Association for Computational Linguistics}
-        {}
-        {}
-	\cventry{04.2006 --\\-- 03.2007}
-        {Member of the Examination Board (Pr\"{u}fungsausschuss)}
-        {}
-        {Cognitive Science Study Programme, University of Osnabr\"{u}ck}
-        {}
-        {}
-    \cventry{12.2005 --\\-- 02.2006}
-        {Member of the Search Committee (Besetzungkommission)}
-        {}
-        {Institute of Cognitive Science}
-        {University of Osnabr\"{u}ck}
-        {BAT IIa research associate in Artificial Intelligence.}
-    \cventry{04.2005 --\\-- 03.2008}
-        {Member of the Academic Studies Commission (Studienkommission)}
-        {}
-        {Cognitive Science Study Programme, University of Osnabr\"{u}ck}
-        {}
-        {}
-    \cventry{02.2005 --\\-- 01.2006}
-        {Member of the Search Committee (Berufungskommission)}
-        {}
-        {Faculty of Humanities}
-        {University of Osnabr\"{u}ck}
-        {W3 professor ship Artificial Intelligence and Cognitive Science.}
-    \cventry{10.2003 --\\-- 03.2008}
-        {Member of the Steering Committee (Vorstand)}
-        {}
-        {Institute of Cognitive Science}
-        {University of Osnabr\"{u}ck}
-        {}
-    \cventry{07.2003 --\\-- 10.2003}
-        {Member of the Search Committee (Besetzungskommission)}
-        {}
-        {Institute of Cognitive Science}
-        {University of Osnabr\"{u}ck}
-        {BAT IIa research associate in Artificial Intelligence.}
-\closesection{}
-
+\input{bit-admin}
 
 %\pagebreak
 \section{Other Activities}
@@ -740,8 +203,7 @@
     \cventry{03.2003}
         {Spring School}
         {}
-        {Interdisciplinary College 2003 (IK2003 [%
-        \href{http://www.ik-guenne.de/html/ik2003.html}{link}])}
+        {Interdisciplinary College 2003 (IK2003)}
         {G\"{u}nne at Lake M\"{o}hne}
         {Focus Theme: Applications, Brains and Computers}
     \cventry{2003}
@@ -761,57 +223,15 @@
     % \cventry{since 1995}{IT Freelancer and Technical Consultant}{}{}{}{}
 	% \cventry{1992 --\\-- 1995}{Representative player for the Bavarian and the Southern German handball team}{}{}{}{}
 	% \cventry{1993 \& 1994}{Bavarian champion in handball with the school team}{}{}{}{} %{Sigmund-Schuckert-Gymnasium}{N\"{u}rnberg}{}{}
-\closesection{}
 
 
 %\pagebreak{}
 \section{Languages}
-    \cvlanguage{German}{Native}{}
-    \cvlanguage{English}{Excellent}{Main education language at university.}
-    \cvlanguage{French}{Basic}{5 years training during high-school.}
-    \cvlanguage{Italian}{Basic}{}
-    %\cvlanguage{Dutch}{Basic}{Primary education degree obtained in a Dutch college\\(Sint-Jozefscollege te Sint-Pieters-Woluwe).}
-\closesection{}
-
+\input{bit-langs}
 
 %\pagebreak{}
 \section{Computer Skills}
-    \cvcomputer{programming}
-        {Python, Java, JavaScript (ECMA\-Scrip), Prolog, ML}
-    {scripting}
-        {Bash, Perl, PHP}
-    \cvcomputer{scientific}
-        {R, CQP, Oracle/Sun Grid Engine, Apache Hadoop, Matlab, OmniFind+UIMA,
-        PDP++, Octave, Prot\'{e}g\'{e}}
-    {design}
-        {\LaTeX, gnuplot, Inkscape, Scribus, InDesign, Illustrator, Photoshop, GIMP}%, OmniGraffle}
-    %\cvcomputer{OS}{Linux, OS X, Windows 2000/XP}{service}{LAMP web server, mail server}
-    \cvcomputer{OS}{Linux, OS~X,\\ Windows~2000/XP/Vista}{services}{Apache, MySQL, PostgreSQL, Exim, Mailman, SpamAssassin, DSpam, Trac, Subversion, ISC DHCP, ISC Bind, Cyrus, Dovecot, OpenVPN, Shorewall, Darwin Calendar Server, OpenLDAP, NIS/YP, Kerberos+NFSv4}
-    %\cvcomputer{CM}{Drupal, Mediawiki, Wordpress}
-    %\cvcomputer{office}{Word, Excel, Access, Powerpoint, LibreOffice}
-\closesection{} %
-%\section{Interests}
-%\cvitem{design}{\small I am a design fan, especially when it comes to typography and photography.}
-%\cvitem{adventure sports}{\small I like practicing adventure sports like skiing, rock climbing and scuba diving, and have been a boy scout for five years.}
-%\cvitem{travelling}{\small I have been living abroad during my childhood, and love travelling around the world.}
-%\closesection{}
-%
-%\section{Section with a list}
-%\cvlistitem{Single item.}
-%\cvlistitem{Another single item.}
-%\cvlistdoubleitem{Double\dots{}}{\dots{} item.}
-%\cvlistdoubleitem{Another double\dots{}}{\dots{} item.}
-%\closesection{}
-%
-%\section{Section with your own content}\closesection
-%Your content here, inside the normal \LaTeX{} environment. You can use any regular \LaTeX{} command, display mathematics
-%\[e =m\,c^2,\]
-%put some table or figure, \dots
-%
-%\emptysection{}
-%\cvitem{Now}{Back to moderncv layout, without making a new section :-)}
-%
-%\nocite{*}
-%\bibliographystyle{plain}
-%\bibliography{jdoe_publications}
+\input{bit-cskills}
+
+\clearpage
 \end{document}
