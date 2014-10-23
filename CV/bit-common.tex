@@ -1,0 +1,72 @@
+
+\moderncvstyle{classic}  
+
+\moderncvcolor{blue}  
+
+
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage{polyglossia}
+  \setmainlanguage{english}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[english]{babel}
+  \usepackage{lmodern}
+\fi
+
+\usepackage[scale=0.8]{geometry}          
+
+
+
+\definecolor{mylinkcolor}{rgb}{0.5,0.5,0.5}
+\AtBeginDocument{\hypersetup{colorlinks,urlcolor=mylinkcolor,unicode=true}}
+\usepackage{url}
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\footnotesize\color{mylinkcolor}\itshape}}}
+\makeatother
+\urlstyle{leo}
+
+
+\iftoggle{cvlong}{
+    \usepackage{xifthen}
+    \newcommand{\cvaentry}[6]{
+        \ifthenelse{\isempty{#5}}
+        {\cventry{#1}{#2}{#3}{#4}{#5}{#6}}
+        {\cventry{#1}{#2}{#3}{#4}{\small{#5}}{#6}}
+    }
+    \newcommand{\cvbentry}[6]{
+        \ifthenelse{\isempty{#4}}
+        {\cvaentry{#1}{#2}{#3}{#4}{#5}{#6}}
+        {\cvaentry{#1}{#2}{#3}{\small{#4}}{#5}{#6}}
+    }
+    \newcommand{\cvpubentry}[6]{
+        \ifthenelse{\isempty{#3}}
+        {\cvbentry{#1}{#2}{#3}{#4}{#5}{#6}}
+        {\cvbentry{#1}{#2}{\small{#3}}{#4}{#5}{#6}}
+    }
+}{}
+
+\iftoggle{cvshort}{
+    \let\oldcventry\cventry
+    \usepackage{xifthen}
+    \renewcommand{\cventry}[6]{
+        \ifthenelse{\isempty{#5}}
+        {\oldcventry{#1}{#2}{#3}{#4}{}{}}
+        {\oldcventry{#1}{#2}{#3}{#4}{}{}}
+    }
+    \newcommand{\cvbentry}[6]{
+        \ifthenelse{\isempty{#4}}
+        {\cventry{#1}{#2}{#3}{#4}{}{}}
+        {\cventry{#1}{#2}{#3}{\small{#4}}{}{}}
+    }
+    \newcommand{\cvpubentry}[6]{
+        \ifthenelse{\isempty{#3}}
+        {\cvbentry{#1}{#2}{#3}{#4}{}{}}
+        {\cvbentry{#1}{#2}{\small{#3}}{#4}{}{}}
+    }
+}{}
+
+

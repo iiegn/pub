@@ -1,0 +1,13 @@
+=== modified file 'moderncv.cls'
+--- moderncv/moderncv.cls	2014-02-23 03:46:40 +0000
++++ moderncv/moderncv.cls	2014-10-23 10:25:18 +0000
+@@ -128,7 +128,7 @@
+     bookmarksopen = true,
+     bookmarksdepth= 2,% to show sections and subsections
+     pdfauthor     = {\@firstname{}~\@lastname{}},
+-    pdftitle      = {\@firstname{}~\@lastname{}\notblank{\@title}{ -- \@title}{}},
++    pdftitle      = {\@firstname{}~\@lastname{}},
+     pdfsubject    = {Resum\'{e} of \@firstname{}~\@lastname{}},
+     pdfkeywords   = {\@firstname{}~\@lastname{}, curriculum vit\ae{}, resum\'{e}}}}
+ 
+

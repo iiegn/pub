@@ -1,0 +1,46 @@
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\usepackage{etoolbox}
+\newtoggle{cvlong}
+\newtoggle{cvshort}
+\newtoggle{cvpub}
+\toggletrue{cvshort}
+
+\input{bit-common}
+
+
+\input{bit-selfhead}
+
+\begin{document}
+\makecvtitle
+
+\section*{}
+\input{bit-selfgloss}
+
+\section{Research and Professional Experience}
+\input{bit-experience}
+
+\section{Education}
+\input{bit-edu}
+
+\pagebreak
+\section{Teaching Experience}
+\input{bit-teaching}
+
+\section{Administrative Experience}
+\input{bit-admin}
+
+
+
+
+
+\section{Languages}
+\input{bit-langs}
+
+\section{Computer Skills}
+\input{bit-cskills}
+
+\clearpage
+\end{document}
+
+
