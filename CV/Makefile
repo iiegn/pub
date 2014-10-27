@@ -5,11 +5,9 @@ ROOT_DIR=$(shell pwd)
 BUILD_DIR=$(ROOT_DIR)/.build
 TEX = xelatex -file-line-error -interaction=errorstopmode
 BIB = bibtex
-LATEXMK_CE_OPTS = '$$cleanup_includes_cusdep_generated=1;\
-				  $$clean_ext .= " bbl";\
-				  $$clean_full_ext .= " bbl"' 
+LATEXMK_CE_OPTS = '$$cleanup_includes_cusdep_generated=1;'
 
-.PHONY: init all clean cleanall
+.PHONY: init all clean cleanall github
 
 all: init $(PDF_TARGETS)
 
@@ -24,17 +22,29 @@ moderncv/moderncv.cls:
 	# bzr diff moderncv/ --prefix moderncv/:moderncv/ > moderncv.patch
 	patch -p0 < moderncv.patch
 
-$(PDF_TARGETS): %.pdf:%.tex $(wildcard bit-*.tex) publications.bib
+$(PDF_TARGETS): %.pdf:%.tex $(wildcard bit-*.tex) $(wildcard *.bib)
+	for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
 	latexmk -pdf -pdflatex="$(TEX)" -bibtex -use-make $<
 
+pre.aux pub,aux: 
+	$(TEX) CV_en.tex
+
 clean:
-	latexmk -c -e $(LATEXMK_CE_OPTS) $(TEX_SRCS)
-	rm comment.cut || true
+	latexmk -c -e $(LATEXMK_CE_OPTS)
+	rm pre.bbl pub.bbl || true
 
 cleanall:
-	latexmk -C -e $(LATEXMK_CE_OPTS) $(TEX_SRCS)
-	rm comment.cut || true
+	latexmk -C -e $(LATEXMK_CE_OPTS)
 
 cleanrealall: cleanall
 	rm moderncv*.sty moderncv.cls tweaklist.sty || true
 	rm -r moderncv || true
+
+github: $(PDF_TARGETS)
+	git checkout github 
+	git cherry-pick -n master 
+	for tex in $(wildcard CV_en*.tex) $(wildcard bit-*.tex); do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' ${tex}; done
+	git commit "CV/ - sync with latest tex"
+	git push
+	git checkout master 
+
