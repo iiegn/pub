@@ -64,8 +64,9 @@ ENTRY
     type
     volume
     year
-    url
+    abstract
     annote
+    url
   }
   {}
   { label }
@@ -788,15 +789,18 @@ FUNCTION {manual}
 }
 
 FUNCTION {misc}
-{ output.bibitem
+{ type empty$ { output.bibitem } { type output.bibitem.plus } if$
   format.authors output
   title howpublished new.block.checkb
   format.title output
   howpublished new.block.checka
   howpublished output
-  format.date output
   new.block
+  abstract empty$ { } { abstract "abstract" output.check } if$
+  new.block
+  address empty$ {} { address output } if$
   format.url output
+  new.block
   fin.entry
   empty.misc.check
 }
