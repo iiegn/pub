@@ -1,5 +1,6 @@
 PDF_TARGETS = CV_en.pdf CV_en-short.pdf CV_en-pubs.pdf
-TEX_SRCS := $(patsubst %pdf,%tex,$(PDF_TARGETS)) $(wildcard bit-*.tex)
+TEX_SRCS := $(patsubst %pdf,%tex,$(PDF_TARGETS))
+TEX_XTRA_SRCS := $(wildcard bit-*.tex)
 BIB_SRCS := $(wildcard *.bib)
 
 TEX = xelatex -file-line-error -interaction=errorstopmode
@@ -20,7 +21,7 @@ moderncv/moderncv.cls:
 	# bzr diff moderncv/ --prefix moderncv/:moderncv/ > moderncv.patch
 	patch -p0 < moderncv.patch
 
-$(PDF_TARGETS): %.pdf:%.tex $(TEX_SRCS) $(BIB_SRCS)
+$(PDF_TARGETS): %.pdf:%.tex $(TEX_XTRA_SRCS) $(BIB_SRCS)
 	for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
 	latexmk -pdf -pdflatex="$(TEX)" -bibtex -use-make $<
 
