@@ -43,11 +43,11 @@ github:
 	git checkout github 
 	# may need more than just the latest commit
 	# git cherry-pick master
-	git checkout master -- Makefile $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS)
+	git checkout master -- Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS)
 	# for tex in CV_en*.tex bit-*.tex; do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' ${tex}; done
 	for tex in $(TEX_SRCS) $(TEX_XTRA_SRCS); do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' $${tex}; done
-	git add Makefile $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS)
-	#git commit "CV/ - sync with master"
+	git add Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS)
+	#git commit -m "CV/ - sync with master"
 	#git push
 	#git checkout master 
 
