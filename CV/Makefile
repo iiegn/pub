@@ -2,6 +2,7 @@ PDF_TARGETS = CV_en.pdf CV_en-short.pdf CV_en-pubs.pdf
 TEX_SRCS := $(patsubst %pdf,%tex,$(PDF_TARGETS))
 TEX_XTRA_SRCS := $(wildcard bit-*.tex)
 BIB_SRCS := $(wildcard *.bib)
+OTR_SRCS := myplainyr.bst
 
 TEX = xelatex -file-line-error -interaction=errorstopmode
 LATEXMK_CE_OPTS = '$$cleanup_includes_cusdep_generated=1;'
@@ -21,7 +22,7 @@ moderncv/moderncv.cls:
 	# bzr diff moderncv/ --prefix moderncv/:moderncv/ > moderncv.patch
 	# patch -p0 < moderncv.patch
 
-$(PDF_TARGETS): %.pdf:%.tex $(TEX_XTRA_SRCS) $(BIB_SRCS)
+$(PDF_TARGETS): %.pdf:%.tex $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
 	for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
 	latexmk -pdf -pdflatex="$(TEX)" -bibtex -use-make $<
 
@@ -43,9 +44,10 @@ github:
 	git checkout github 
 	# may need more than just the latest commit
 	# git cherry-pick master
-	git checkout master -- Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS)
+	git checkout master -- Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
 	# for tex in CV_en*.tex bit-*.tex; do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' ${tex}; done
 	for tex in $(TEX_SRCS) $(TEX_XTRA_SRCS); do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' $${tex}; done
+	sed -i '/\(file = \)\|\(mendeley-groups =\)\|\(mendeley-tags =\)/d' $(BIB_SRCS)
 	git add Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS)
 	#git commit -m "CV/ - sync with master"
 	#git push

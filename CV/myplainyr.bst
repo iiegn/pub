@@ -61,6 +61,7 @@ ENTRY
     school
     series
     title
+    shorttitle
     type
     volume
     year
@@ -516,7 +517,27 @@ FUNCTION {format.in.ed}
 }
 
 FUNCTION {format.in.ed.booktitle}
-{ booktitle format.in.ed }
+{ booktitle empty$
+    { "" }
+    { editor empty$
+        { "In " booktitle emphasize * }
+        { "In " format.editors * ", " * booktitle emphasize * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.in.ed.journal}
+{ journal empty$
+    { "" }
+    { editor empty$
+        { "In " journal emphasize * }
+        { "In " format.editors * ", " * journal emphasize * }
+      if$
+    }
+  if$
+}
+
 
 FUNCTION {empty.misc.check}
 { author empty$ title empty$ howpublished empty$
@@ -553,21 +574,6 @@ FUNCTION {format.tr.number}
     { "t" change.case$ }
     { number tie.or.space.connect }
   if$
-}
-
-FUNCTION {format.article.crossref}
-{ key empty$
-    { journal empty$
-        { "need key or journal for " cite$ * " to crossref " * crossref *
-          warning$
-          ""
-        }
-        { "In {\em " journal * "\/}" * }
-      if$
-    }
-    { "In " key * }
-  if$
-  " \cite{" * crossref * "}" *
 }
 
 FUNCTION {format.crossref.editor}
@@ -643,11 +649,11 @@ FUNCTION {article}
   new.block
   format.title "title" output.check
   new.block
-  journal emphasize "journal" output.check
-  format.vol.num.pages small "pages" output.check
   new.block
-  new.block
+  format.in.ed.journal "journal" output.check
+  format.pages small "pages" output.check
   format.url output
+  new.block
   fin.entry
 }
 
@@ -665,11 +671,10 @@ FUNCTION {book}
   new.block
   annote empty$ { } { annote "annote" output.check } if$
   new.block
+  new.block
   format.number.series output
   publisher empty$ {} { publisher output } if$
   address output
-  format.edition output
-  new.block
   format.url output
   fin.entry
 }
@@ -725,10 +730,10 @@ FUNCTION {incollection}
   format.number.series output
   format.chapter.pages output
   new.block
+  new.block
   publisher "publisher" output.check
   address empty$ {} { address output } if$
   format.edition output
-  new.block
   format.url output
   fin.entry
 }
@@ -746,9 +751,9 @@ FUNCTION {inproceedings}
   new.block
   address empty$ {} { address output } if$
   organization empty$ {} { organization output } if$
-  new.block
   publisher empty$ {} { publisher output } if$
   format.url output
+  new.block
   fin.entry
 }
 
@@ -789,7 +794,7 @@ FUNCTION {manual}
 }
 
 FUNCTION {misc}
-{ type empty$ { output.bibitem } { type output.bibitem.plus } if$
+{ shorttitle empty$ { output.bibitem } { shorttitle output.bibitem.plus } if$
   format.authors output
   title howpublished new.block.checkb
   format.title output
@@ -798,6 +803,7 @@ FUNCTION {misc}
   new.block
   abstract empty$ { } { abstract "abstract" output.check } if$
   new.block
+  publisher empty$ {} { publisher output } if$
   address empty$ {} { address output } if$
   format.url output
   new.block
