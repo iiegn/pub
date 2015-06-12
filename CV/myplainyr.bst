@@ -277,11 +277,11 @@ FUNCTION {format.names}
             { ", " * t * }
             { numnames #2 >
                 { "," * }
-                { "," * }
+                'skip$
               if$
               t "others" =
                 { " et~al." * }
-                { " " * t * }
+                { " and " * t * }
               if$
             }
           if$
@@ -301,10 +301,35 @@ FUNCTION {format.authors}
   if$
 }
 
-FUNCTION {format.editors}
+FUNCTION {format.all.editors}
 { editor empty$
     { "" }
     { editor format.names
+      editor num.names$ #1 >
+        { ", editors" * }
+        { ", editor" * }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.editors}
+{ editor empty$
+    { "" }
+    { editor #1 "{vv~}{ll}" format.name$
+      editor num.names$ duplicate$
+      #2 >
+        { pop$ " et~al." * }
+        { #2 <
+            'skip$
+            { editor #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
+                { " et~al." * }
+                { " and " * editor #2 "{vv~}{ll}" format.name$ * }
+              if$
+            }
+          if$
+        }
+      if$
       editor num.names$ #1 >
         { ", editors" * }
         { ", editor" * }
@@ -344,23 +369,6 @@ FUNCTION {n.dashify}
     }
   while$
 }
-
-%FUNCTION {format.date}
-%{ year empty$
-%    { month empty$
-%        { "" }
-%        { "there's a month but no year in " cite$ * warning$
-%          month
-%        }
-%      if$
-%    }
-%    { month empty$
-%        'year
-%        { month " " * year * }
-%      if$
-%    }
-%  if$
-%}
 
 FUNCTION {format.date}
 {
@@ -660,7 +668,7 @@ FUNCTION {article}
 FUNCTION {book}
 { output.bibitem
   author empty$
-    { format.editors "author and editor" output.check }
+    { format.all.editors "author and editor" output.check }
     { format.authors output.nonnull
       "author and editor" editor either.or.check
     }
@@ -679,24 +687,10 @@ FUNCTION {book}
   fin.entry
 }
 
-%FUNCTION {booklet}
-%{ output.bibitem
-%  format.authors output
-%  new.block
-%  format.title "title" output.check
-%  howpublished address new.block.checkb
-%  howpublished output
-%  address output
-%  format.date output
-%  new.block
-%  note output
-%  fin.entry
-%}
-
 FUNCTION {inbook}
 { output.bibitem
   author empty$
-    { format.editors "author and editor" output.check }
+    { format.all.editors "author and editor" output.check }
     { format.authors output.nonnull
       crossref missing$
         { "author and editor" editor either.or.check }
@@ -831,7 +825,7 @@ FUNCTION {proceedings}
 { output.bibitem
   editor empty$
     { organization output }
-    { format.editors output.nonnull }
+    { format.all.editors output.nonnull }
   if$
   new.block
   format.btitle "title" output.check
