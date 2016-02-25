@@ -1,0 +1,137 @@
+\documentclass[10pt,a4paper]{moderncv}
+
+\usepackage{etoolbox}
+\newtoggle{cvlong}
+\newtoggle{cvshort}
+\newtoggle{cvpub}
+\newtoggle{cveu}
+\toggletrue{cvshort}
+\toggletrue{cveu}
+
+\input{bit-common}
+\newcites{pubfiveyjours}{Publications}
+\newcites{pubfiveyconfs}{Publications}
+
+\moderncvstyle{classic}
+\moderncvcolor{red}
+
+\input{bit-selfhead}
+
+\usepackage{multibib}
+\newcites{talk}{{Talks}}
+
+\begin{document}
+
+\section{Personal information}
+{\large
+\cvitem{Name}           {\myfname~\mylname}
+\cvitem{Address}        {\myaddress \newline 
+                         \myinstitute \newline
+                         \myaddresss \newline 
+                         \myaddressss}
+\cvitem{Telephone}      {\myphonefix}
+\cvitem{Nationality}    {\mynationality}
+\cvitem{Date~of~birth}  {\mydob}
+\cvitem{}{}
+\cvitem{E-mail}         {\url{\myemail}}
+\cvitem{Website}        {\url{\myhpage}}
+}
+
+
+\section{Main areas of research}
+\cvitem{}{\myrinterests \newline \myrinterestss \newline \myrinterestsss}
+
+
+\section{Academic experience}
+\input{bit-experience}
+\input{bit-edu}
+
+
+
+\section{Invited accademic talks}
+\nocitepre{Stemle2015c,Stemle2015a,Stemle2013,Stemle2012a,Stemle2012}
+\bibliographystylepre{myplainyr}
+\bibliographypre{presentations} 
+
+\section{Five most important academic prizes/awards}
+    \cventry{09.2013}
+        {RANLP-2013 Young Researcher Award}
+        {best paper}
+        {High-Accuracy Phrase Translation Acquisition through Battle-Royale Selection}{}
+
+	\cventry{04.2009 --\\-- 01.2012}
+        {Research Fellow}
+        {Grant for research activities at the Center for Mind/Brain Sciences
+        (CIMeC) of the University of Trento}
+        {}{}{}
+
+\section{Five most important peer review activities, editorships and/or
+         memberships in academic organisations}
+    \cventry{08.2016}
+        {Member of the reviewing board for the special issue of the open-access
+         journal Slovenščina 2.0 on Computer-Mediated Communication}
+        {}
+        {[\href{http://www.trojina.org/slovenscina2.0/en/}{www.trojina.org/slovenscina2.0/en/}]}
+        {} 
+        {}
+
+    \cventry{2016,2014}
+        {Member of the Organising Committee and Programme Committee}
+        {Workshops}
+        {10th \& 8th Web as Corpus Workshops}
+        {}{}
+
+    \cventry{2015,2014}
+        {Member of the Programme Committee}
+        {Workshops}
+        {1st \& 2nd Workshops on Natural Language Processing for Computer-Mediated Communication /
+        Social Media (NLP4CMC)}
+        {}{}
+
+    \cventry{since 08.2012}
+        {Secretary of the Special Interest Group on the Web as Corpus (SIGWAC)}
+        {SIG of the Association for Computational Linguistics}
+        {[\href{https://www.sigwac.org.uk/}{www.sigwac.org.uk}]}
+        {}
+        {}
+
+    \cventry{since 11.2002}
+        {Member of the German Cognitive Science Society (GK e.V.)}
+        {}
+        {[\href{http://www.gk-ev.de}{www.gk-ev.de}]}
+        {}
+        {}
+
+
+\section{List of the 10 most important scientific / scholarly publication in
+         the entire career to date}
+\nocitepub{NicolasStemleGlaznieksAbel2014, StemleOnysko2014,
+           GlaznieksNicolasStemleAbelLyding2014, KranebitterStemle2013,
+           Nicolas2013a, EkbalEtAl:2011, RodriguezDeloguVersleyStemlePoesio2010,
+           BlohmCimianoStemle2007}
+\bibliographystylepub{myplainyr}
+\bibliographypub{publications} 
+
+
+\section{List of scholarly publications in the last 5 years}
+\subsection{Journal Articles}
+\nocitepubfiveyjours{NicolasStemleGlaznieksAbel2014, StemleOnysko2014,
+                     GlaznieksNicolasStemleAbelLyding2014, GlaznieksStemle2014,
+                     EkbalEtAl:2011, WAC8}
+\bibliographystylepubfiveyjours{myplainyr}
+\bibliographypubfiveyjours{publications} 
+
+
+\subsection{Conference Proceedings}
+\nocitepubfiveyconfs{FreyGlaznieksStemle2015, KranebitterStemle2013,
+                     ABEL14.934, LYDING14.517, GenereuxStemleNicolasLyding2014,
+                     FreyStemleGlaznieks2014, paisa2014, Nicolas2013a,
+                     Lyding2013a, NicolasStemleKranebitter2012,
+                     Bonin:2012:AAT:2392747.2392768, PoesioSDH2011,
+                     murphy-stemle:2011:DIALECTS, poesio-EtAl:2011:LaTeCH-2011}
+\bibliographystylepubfiveyconfs{myplainyr}
+\bibliographypubfiveyconfs{publications} 
+
+
+\clearpage
+\end{document}

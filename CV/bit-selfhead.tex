@@ -1,18 +1,35 @@
 
+\def\myfname{egon~w.}
+\def\mylname{stemle}
+\def\mytitle{Researcher}
+\def\myaddress{European Academy of Bozen/Bolzano~(EURAC)}
+\def\myinstitute{Institute for Specialised Communication and Multilingualism}
+\def\myaddresss{Viale Druso, 1}
+\def\myaddressss{I-39100 Bolzano (BZ)}
+
+\def\myphonefix{+39 0471 055.129}
+\def\myemail{egon.stemle@eurac.edu}
+\def\myhpage{iiegn.eu/work}
+
+\def\mynationality{German}
+\def\mydob{20.Sept.1977}
+
+\def\myrinterests{Computational Linguistics, Corpus Linguistics, Web Corpora}
+\def\myrinterestss{Artificial Intelligence, Machine Learning, Ontologies}
+\def\myrinterestsss{Cognitive Science}
+
+\name{\myfname}{\mylname}
+\address{\myaddress}{\myaddresss}{\myaddressss}
+\email{\myemail}
+
 \iftoggle{cvlong}{
-    \name{egon~w.}{stemle}
-    \title{Researcher}
-    \address{European Academy of Bozen/Bolzano~(EURAC)}{Viale Druso, 1}{I-39100 Bolzano (BZ)}
-    \phone[fixed]{+39 0471 055.129}  
-    \email{egon.stemle@eurac.edu}
-    \homepage{iiegn.eu/work}
+    \title{\mytitle}
+    \phone[fixed]{\myphonefix}  
+    \homepage{\myhpage}
     \photo[45pt][0.3pt]{estemle.jpg}
 }{
-    \name{egon~w.}{stemle}
-    \email{egon.stemle@eurac.edu}
-    \address{European Academy of Bozen/Bolzano~(EURAC)}{Viale Druso, 1}{I-39100 Bolzano (BZ)}
     \nottoggle{cvpub}{
-        \title{Researcher}
-        \homepage{iiegn.eu/work}
+        \title{\mytitle}
+        \homepage{\myhpage}
     }{}
 }

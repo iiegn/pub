@@ -1,4 +1,4 @@
-PDF_TARGETS = CV_en.pdf CV_en-short.pdf CV_en-pubs.pdf
+PDF_TARGETS = CV_en.pdf CV_en-short.pdf CV_en-pubs.pdf CV_en-eu.pdf
 TEX_SRCS := $(patsubst %pdf,%tex,$(PDF_TARGETS))
 TEX_XTRA_SRCS := $(wildcard bit-*.tex)
 BIB_SRCS := $(wildcard *.bib)
