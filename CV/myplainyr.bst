@@ -61,11 +61,10 @@ ENTRY
     school
     series
     title
-    shorttitle
+    keywords
     type
     volume
     year
-    abstract
     annote
     url
   }
@@ -342,6 +341,13 @@ FUNCTION {format.title}
 { title empty$
     { "" }
     { title "t" change.case$ }
+  if$
+}
+
+FUNCTION {format.type}
+{ type empty$
+    { "" }
+    { type "t" change.case$ }
   if$
 }
 
@@ -788,16 +794,16 @@ FUNCTION {manual}
 }
 
 FUNCTION {misc}
-{ shorttitle empty$ { output.bibitem } { shorttitle output.bibitem.plus } if$
-  format.authors output
-  title howpublished new.block.checkb
-  format.title output
-  howpublished new.block.checka
-  howpublished output
+{ keywords empty$ { output.bibitem } { keywords output.bibitem.plus } if$
+  format.authors "author" output.check
   new.block
-  abstract empty$ { } { abstract "abstract" output.check } if$
+  format.title "title" output.check
+  new.block
+  format.type "type" output.check
+  booktitle empty$ {} { booktitle output } if$
   new.block
   publisher empty$ {} { publisher output } if$
+  institution empty$ {} { institution output } if$
   address empty$ {} { address output } if$
   format.url output
   new.block
