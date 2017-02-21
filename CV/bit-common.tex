@@ -28,41 +28,41 @@
 \def\url@leostyle{%
   \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\footnotesize\color{mylinkcolor}\itshape}}}
 \makeatother
-\nottoggle{cveu}{
+\nottoggle{cveu}{%
 \urlstyle{leo}
 }{}
 
 
 \usepackage{xifthen}
 \let\oldcventry\cventry
-\iftoggle{cvlong}{
-    \newcommand{\cvbentry}[6]{
+\iftoggle{cvlong}{%
+    \newcommand{\cvbentry}[6]{%
         \ifthenelse{\isempty{#5}}
         {\cventry{#1}{#2}{#3}{#4}{#5}{#6}}
         {\cventry{#1}{#2}{#3}{#4}{\small{#5}}{#6}}
     }
-    \newcommand{\cvaentry}[6]{
+    \newcommand{\cvaentry}[6]{%
         \ifthenelse{\isempty{#4}}
         {\cvbentry{#1}{#2}{#3}{#4}{#5}{#6}}
         {\cvbentry{#1}{#2}{#3}{\small{#4}}{#5}{#6}}
     }
-    \newcommand{\cvpubentry}[6]{
+    \newcommand{\cvpubentry}[6]{%
         \ifthenelse{\isempty{#3}}
         {\cvaentry{#1}{#2}{#3}{#4}{#5}{#6}}
         {\cvaentry{#1}{#2}{\small{#3}}{#4}{#5}{#6}}
     }
 }{}
 
-\iftoggle{cvshort}{
-    \renewcommand{\cventry}[6]{
+\iftoggle{cvshort}{%
+    \renewcommand{\cventry}[6]{%
         \oldcventry{#1}{#2}{#3}{#4}{}{}
     }
-    \newcommand{\cvaentry}[6]{
+    \newcommand{\cvaentry}[6]{%
         \ifthenelse{\isempty{#4}}
         {\cventry{#1}{#2}{#3}{#4}{}{}}
         {\cventry{#1}{#2}{#3}{\small{#4}}{}{}}
     }
-    \newcommand{\cvpubentry}[6]{
+    \newcommand{\cvpubentry}[6]{%
         \ifthenelse{\isempty{#3}}
         {\cvaentry{#1}{#2}{#3}{#4}{}{}}
         {\cvaentry{#1}{#2}{\small{#3}}{#4}{}{}}

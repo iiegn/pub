@@ -22,13 +22,13 @@
 \address{\myaddress}{\myaddresss}{\myaddressss}
 \email{\myemail}
 
-\iftoggle{cvlong}{
+\iftoggle{cvlong}{%
     \title{\mytitle}
     \phone[fixed]{\myphonefix}  
     \homepage{\myhpage}
     \photo[45pt][0.3pt]{estemle.jpg}
-}{
-    \nottoggle{cvpub}{
+}{%
+    \nottoggle{cvpub}{%
         \title{\mytitle}
         \homepage{\myhpage}
     }{}

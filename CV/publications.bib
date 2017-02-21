@@ -1,29 +1,115 @@
-@unpublished{frey-glaznieks-stemle:2016:didi,
-    abstract = {The DiDi corpus of South Tyrolean data of computer-mediated communication (CMC) is a multilingual sociolinguistic language corpus. It consists of around 600,000 tokens collected from 136 profiles of Facebook users residing in South Tyrol, Italy. In conformity with the multilingual situation of the territory, the main languages of the corpus are German and Italian (followed by English). The data has been manually anonymised and provides manually corrected part-of-speech tags for the Italian language texts and manually normalised data for German texts. Moreover, it is annotated with user-provided socio-demographic data (among others L1, gender, age, education, and internet communication habits) from a questionnaire, and linguistic annotations regarding CMC phenomena, languages and varieties. The anonymised corpus is freely available for research purposes.},
-    author = {Frey, Jennifer-Carmen and Glaznieks, Aivars and Stemle, Egon W.},
+@unpublished{abel-stemle:2017:elex,
+    abstract = {
+        The goal of the project STyrLogisms is to semi-automatically extract
+        neologism candidates for the German standard variety used in South
+        Tyrol, a province in Northern Italy where German is an official
+        language. Immediate use-cases for these neologisms include, for example,
+        consideration for future editions of the “Variantenwörterbuch des
+        Deutschen” [@Ammon2016] and other dictionaries. Also, the language
+        centre of the South Tyrolean cultural institute[^1] observes trends of
+        the local variety of German, and they are interested in supplementing
+        their activity with data from neologism candidates.
+
+        Neologisms are usually divided into at least two categories: one
+        category for words used in a new meaning but without any change of form,
+        the other category for new lexemes with an unseen graphical
+        representation, for example compounds or derived forms [@Alego1980].
+        (See [@Kinne1998] for a similar classification for German:
+         *Neubedeutung* vs. *Neulexem*.)
+
+        In STryLogism, we focus on new lexemes, a principle we adopted and still
+        share with the Wortwarte[^2], a project that has been regularly
+        collecting and documenting new German words. The collection is based on
+        German online-newspaper texts, and the selection of appropriate
+        neologism candidates is carried out on the basis of a (typically) daily
+        evaluation where new data is compared with the (continuously growing)
+        German reference corpus (DEREKO)[@KUPIETZ14.842] with approximately 29
+        billion word tokens (status: 2016). To avoid “random” errors (e.g.,
+        typing errors) and filter out misspellings, the selection of neologisms
+        is done ‘manually’ after the comparison with the <span>DEREKO</span>.
+        Possible improvements or changes of this basic set-up are suggested, for
+        example by @ELX08-043: in the absence of (free access to) a reference
+        corpus they continuously crawl the web and grow their own reference
+        corpus, and also make use of other resources, like a headword list
+        augmented with inflected forms. @Kerremans, on the other hand, closely
+        monitor the development of pre-selected neologisms with automatic
+        queries to the commercial search engine Google, e.g. they use an option
+        to only retrieve very recent results.
+
+        We use a list of around 250 vetted URLs from news and blog websites of
+        South Tyrol and regularly crawl their data, clean and process it and
+        compare this data to our reference corpora and additional word lists,
+        and the combination of all formerly crawled data sets. Our reference
+        corpora are DECOW14 [@SCHFER12.834] with around 60m types, and the South
+        Tyrolean Web Corpus [@4167988]; the additional word lists consist of
+        named entities, terminological terms from the region, and specific terms
+        of the regional dialect (altogether around 50k types). Then, the cleaned
+        data of the current crawl is tokenised - but not lemmatised - and
+        converted into a word list. This list of candidate words consists of
+        those words in the current crawl that appear less than a predefined
+        number of times in all of the other data. Finally, the candidates are
+        manually checked in a specifically crafted streamlined interface.
+
+        A first list of neologism candidates has been extracted and is being
+        processed by two annotators. The manually selected candidates will be
+        monitored over time to see whether they were only occasionalisms or are
+        worth considering for the inclusion into a dictionary.
+
+        [^1]: http://www.kulturinstitut.org/hauptnavigation/sprachstelle.html
+
+        [^2]: http://wortwarte.de
+    },
+    author = {Abel, Andrea and Stemle, Egon W},
+    publisher = {Submitted to eLex 2017},
+    title = {{Neologisms in Variety - STyrLogisms}},
+    type = {Abstract},
+    year = {2017}
+}
+@unpublished{beisswenger-EtAl:2016:clarin-long,
+    abstract = {The paper presents best practices and results from projects dedicated to the creation of corpora of computer-mediated communication and social media interactions (CMC) from four different countries. Even though there are still many open issues related to building and annotating corpora of that type, there already exists a range of tested solutions which may serve as a starting point for a comprehensive discussion on how future standards for CMC corpora could (and should) be shaped like.},
+    author = {Bei{\ss}wenger, Michael and Chanier, Thierry and Erjavec, Toma{\v{z}} and Fi{\v{s}}er, Darja and Herold, Axel and Lube{\v{s}}i{\'{c}}, Nikola and L{\"{u}}ngen, Harald and Poudat, C{\'{e}}line and Stemle, Egon and Storrer, Angelika and Wigham, Ciara},
+    publisher = {Submitted for Selected Papers from the CLARIN Annual Conference 2016},
+    type = {Long Paper},
+    title = {{Closing a gap in the language resources landscape: Groundwork and best practices from projects on computer-mediated communication in four European countries}},
+    year = {2016}
+}
+@inproceedings{stemle:2016:evalita,
+    abstract = {This article describes the system that participated in the POS tagging for Italian Social Media Texts (PoSTWITA) task of the 5th periodic evaluation campaign of Natural Language Processing (NLP) and speech tools for the Italian language EVALITA 2016. The work is a continuation of Stemle (2016) with minor modifications to the system and different data sets. It combines a small assertion of trending techniques, which implement matured methods, from NLP and ML to achieve competitive results on PoS tagging of Italian Twitter texts; in particular, the system uses word embeddings and character-level representations of word beginnings and endings in a LSTM RNN architecture. Labelled data (Italian UD corpus, DiDi and PoSTWITA) and unlabbelled data (Italian C4Corpus and PAISA') were used for training. The system is available under the APLv2 open-source license.},
+    address = {Napoli, Italy},
+    author = {Stemle, Egon W},
+    booktitle = {Proceedings of Third Italian Conference on Computational Linguistics (CLiC-it 2016) {\&} Fifth Evaluation Campaign of Natural Language Processing and Speech Tools for Italian. Final Workshop (EVALITA 2016)},
+    editor = {Basile, Pierpaolo and Corazza, Anna and Cutugno, Franco and Montemagni, Simonetta and Nissim, Malvina and Patti, Viviana and Semeraro, Giovanni and Sprugnoli, Rachele},
     month = dec,
-    publisher = {Accepted at CLIC-it 2016},
-    type = {Accepted},
+    title = {{bot.zen @ EVALITA 2016 - A minimally-deep learning PoS-tagger (trained for Italian Tweets)}},
+    year = {2016}
+}
+@inproceedings{frey-glaznieks-stemle:2016:didi,
+    abstract = {The DiDi corpus of South Tyrolean data of computer-mediated communication (CMC) is a multilingual sociolinguistic language corpus. It consists of around 600,000 tokens collected from 136 profiles of Facebook users residing in South Tyrol, Italy. In conformity with the multilingual situation of the territory, the main languages of the corpus are German and Italian (followed by English). The data has been manually anonymised and provides manually corrected part-of-speech tags for the Italian language texts and manually normalised data for German texts. Moreover, it is annotated with user-provided socio-demographic data (among others L1, gender, age, education, and internet communication habits) from a questionnaire, and linguistic annotations regarding CMC phenomena, languages and varieties. The anonymised corpus is freely available for research purposes.},
+    address = {Napoli, Italy},
+    author = {Frey, Jennifer-Carmen and Glaznieks, Aivars and Stemle, Egon W.},
+    booktitle = {Proceedings of Third Italian Conference on Computational Linguistics (CLiC-it 2016) {\&} Fifth Evaluation Campaign of Natural Language Processing and Speech Tools for Italian. Final Workshop (EVALITA 2016)},
+    editor = {Basile, Pierpaolo and Corazza, Anna and Cutugno, Franco and Montemagni, Simonetta and Nissim, Malvina and Patti, Viviana and Semeraro, Giovanni and Sprugnoli, Rachele},
+    month = dec,
     title = {{The DiDi Corpus of South Tyrolean CMC Data: A multilingual corpus of Facebook texts}},
     year = {2016}
 }
-@unpublished{abel-EtAl:2016:koko.pdf,
+@inproceedings{abel-EtAl:2016:koko,
     abstract = {This paper describes an extended version of the KoKo corpus (version KoKo4, Dec 2015), a corpus of written German L1 learner texts from three different German-speaking regions in three different countries. The KoKo corpus is richly annotated with learner language features on different linguistic levels such as errors or other linguistic characteristics that are not deficit-oriented, and is enriched with a wide range of metadata. This paper complements a previous publication (Abel et al., 2014a) and reports on new textual metadata and lexical annotations and on the methods adopted for their manual annotation and linguistic analyses. It also briefly introduces some linguistic findings that have been derived from the corpus.},
+    address = {Napoli, Italy},
     author = {Abel, Andrea and Glaznieks, Aivars and Nicolas, Lionel and Stemle, Egon},
+    booktitle = {Proceedings of Third Italian Conference on Computational Linguistics (CLiC-it 2016) {\&} Fifth Evaluation Campaign of Natural Language Processing and Speech Tools for Italian. Final Workshop (EVALITA 2016)},
+    editor = {Basile, Pierpaolo and Corazza, Anna and Cutugno, Franco and Montemagni, Simonetta and Nissim, Malvina and Patti, Viviana and Semeraro, Giovanni and Sprugnoli, Rachele},
     month = dec,
-    publisher = {Accepted at CLIC-it 2016},
-    type = {Accepted},
     title = {{An extended version of the KoKo German L1 Learner corpus}},
     year = {2016}
 }
-@unpublished{beisswenger-EtAl:2016:clarin,
+@inproceedings{beisswenger-EtAl:2016:clarin,
     author = {Bei{\ss}wenger, Michael and Chanier, Thierry and Chiari, Isabella and Erjavec, Toma{\v{z}} and Fi{\v{s}}er, Darja and Herold, Axel and Lube{\v{s}}i{\'{c}}, Nikola and L{\"{u}}ngen, Harald and Poudat, C{\'{e}}line and Stemle, Egon and Storrer, Angelika and Wigham, Ciara},
+    booktitle = {Proceedings of the CLARIN Annual Conference 2016},
     keywords = {CMC corpora,TEI,community building,computer-mediated communication,corpus annotation,language resources,social media corpora},
     abstract = {The paper presents best practices and results from projects in four CLARIN member countries dedicated to the creation of corpora of computer-mediated communication and social media interactions (CMC). Even though there are still many open issues related to building and annotating corpora of that type, there already exists a range of accessible solutions which have been tested in projects and which may serve as a starting point for a more precise discussion of how future standards for CMC corpora may (and should) be shaped like.},
     month = oct,
-    publisher = {Accepted for oral presentation at CLARIN Annual Conference 2016},
     title = {{Integrating corpora of computer-mediated communication into the language resources landscape: Initiatives and best practices from French, German, Italian and Slovenian projects}},
-    type = {Accepted},
     year = {2016}
 }
 @inproceedings{stemle:2016:WAC-X,
