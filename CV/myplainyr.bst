@@ -880,7 +880,7 @@ FUNCTION {techreport}
 }
 
 FUNCTION {unpublished}
-{ type output.bibitem.plus
+{ keywords empty$ { output.bibitem } { keywords output.bibitem.plus } if$
   format.authors "author" output.check
   new.block
   format.title "title" output.check
@@ -889,11 +889,11 @@ FUNCTION {unpublished}
   series empty$ editor empty$ or { } { format.editors ":" * series * format.in.ed output } if$
   new.block
   publisher empty$ {} { publisher output } if$
-  address empty$ {} { address output } if$
   organization empty$ {} { organization output } if$
-  new.block
   format.url output
+  new.block
   fin.entry
+  empty.misc.check
 }
 
 FUNCTION {default.type} { misc }
