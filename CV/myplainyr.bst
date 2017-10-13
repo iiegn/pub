@@ -662,10 +662,12 @@ FUNCTION {article}
   format.authors "author" output.check 
   new.block
   format.title "title" output.check
+  format.bvolume output
   new.block
   new.block
   format.in.ed.journal "journal" output.check
   format.pages small "pages" output.check
+  publisher "publisher" output.check
   format.url output
   new.block
   fin.entry
