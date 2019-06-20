@@ -29,13 +29,17 @@
 \input{bit-teaching}
 
 \section{Publications}
-\input{bit-pubs}
+\begin{refsection}[pub]
+    \nocite{*}
+    \printbibliography[heading=pub]
+\end{refsection}
 
 \pagebreak
 \section{Presentations {\footnotesize (talks, posters, etc.~without proceedings)}}
-\nocitepre{*}
-\bibliographystylepre{myplainyr}
-\bibliographypre{presentations} 
+\begin{refsection}[pre]
+    \nocite{*}
+    \printbibliography[heading=pre]
+\end{refsection}
 
 \section{Workshops, Conferences and Review Activities}
 \input{bit-worksnconfs}

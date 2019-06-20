@@ -4,14 +4,17 @@ TEX_XTRA_SRCS := $(wildcard bit-*.tex)
 BIB_SRCS := $(wildcard *.bib)
 OTR_SRCS := myplainyr.bst
 
-TEX = xelatex -file-line-error -interaction=errorstopmode
+#TEX = xelatex -file-line-error -interaction=errorstopmode
+LATEXMK := docker-compose run texlive latexmk 
+LATEXMK_PDFLATEX_OPTS ?= -file-line-error -interaction=nonstopmode
 LATEXMK_CE_OPTS = '$$cleanup_includes_cusdep_generated=1;'
 
 .PHONY: init all clean cleanall cleanrealall github
 
 all: init $(PDF_TARGETS)
 
-init: moderncv.cls
+#init: moderncv.cls
+init:
 
 moderncv.cls: moderncv/moderncv.cls
 	ln -s moderncv/moderncv.cls . || true
@@ -24,17 +27,17 @@ moderncv/moderncv.cls:
 
 $(PDF_TARGETS): %.pdf:%.tex $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
 	for AUX in $(wildcard *.aux); do echo $${AUX}; [ -s $${AUX} ] || rm $${AUX}; done
-	latexmk -pdf -pdflatex="$(TEX)" -bibtex -use-make $<
+	$(LATEXMK) -pdf -pdflatex="lualatex $(LATEXMK_PDFLATEX_OPTS)" -dvi- -ps- -bibtex -use-make $<
 
 pre.aux pub,aux: 
-	$(TEX) CV_en.tex
+	$(LATEXMK) -pdf -pdflatex="lualatex $(LATEXMK_PDFLATEX_OPTS)" -dvi- -ps- -bibtex -use-make CV_en.tex
 
 clean:
-	latexmk -c -bibtex -e $(LATEXMK_CE_OPTS)
-	rm pre.bbl pub.bbl || true
+	$(LATEXMK) -c -bibtex -e $(LATEXMK_CE_OPTS) $(TEX_SRCS)
+	-rm pre.bbl pub.bbl *.run.xml
 
 cleanall:
-	latexmk -C -bibtex -e $(LATEXMK_CE_OPTS)
+	$(LATEXMK) -C -bibtex -e $(LATEXMK_CE_OPTS) $(TEX_SRCS)
 
 cleanrealall: cleanall
 	rm moderncv*.sty moderncv.cls tweaklist.sty || true

@@ -5,16 +5,28 @@
 
 
 \usepackage{ifxetex}
+\usepackage{ifluatex}
+
 \ifxetex
   \usepackage{fontspec}
   \usepackage{polyglossia}
+  \usepackage{csquotes}
   \setmainlanguage{english}
   \setmainfont[Ligatures=TeX]{Latin Modern Sans}
 \else
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage[english]{babel}
-  \usepackage{lmodern}
+    \ifluatex
+        \usepackage{fontspec}
+        \usepackage{polyglossia}
+        \usepackage{csquotes}
+        \setmainlanguage{english}
+        \setotherlanguages{german}
+        \setmainfont[Ligatures=TeX]{Latin Modern Sans}
+    \else
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        \usepackage[english]{babel}
+        \usepackage{lmodern}
+    \fi
 \fi
 
 \usepackage[scale=0.8]{geometry}          
@@ -69,7 +81,122 @@
     }
 }{}
 
-\usepackage{multibib}
-\newcites{pub}{Publications}
-\newcites{pre}{Presentations}
+\usepackage[
+    backend=biber,
+    dashed=false,
+    hyperref=true,
+    style=authortitle,
+    sorting=cv,
+    maxnames=15
+    ]{biblatex}
+\defbibheading{pub}{}
+\addbibresource[label=pub]{publications.bib}
+\defbibheading{pre}{}
+\addbibresource[label=pre]{presentations.bib}
+
+\patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
+
+\DeclareSortingTemplate{cv}{%
+  \sort[direction=descending]{%
+    \field{sortyear}
+    \field{year}
+  }
+  \sort[direction=descending]{%
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{00}
+  }
+  \sort[direction=descending]{%
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{00}
+  }
+  \sort[direction=descending]{%
+    \field[padside=left,padwidth=4,padchar=0]{volume}
+    \literal{0000}
+  }
+  \sort[sortcase=false]{%
+    \field{type}
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+  }
+  \sort[sortcase=false]{%
+    \field{sorttitle}
+    \field{title}
+  }
+}
+
+\newcommand*{\bibyear}{}
+\defbibenvironment{bibliography}
+  {\list
+     {\iffieldequals{year}{\bibyear}
+        {}
+        {\printfield{year}%
+         \savefield{year}{\bibyear}}}
+     {\setlength{\topsep}{0pt}
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+      \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+
+
+\renewbibmacro*{byeditor+others}{%
+  \setunit{\addcomma\space}%
+  \ifnameundef{editor}
+    {}
+    {\usebibmacro{byeditor+othersstrg}%
+     \setunit{\addspace}%
+     \printnames[byeditor][1-1]{editor}%
+     \clearname{editor}%
+     \newunit}%
+  \usebibmacro{byeditorx}%
+  \usebibmacro{bytranslator+others}}
+
+\newcommand{\declaremynameformat}[1] {%
+    \DeclareNameFormat{#1}{%
+      \renewcommand*{\multinamedelim}{\addsemicolon\addspace}%
+      \nameparts{#1}%
+      \textbf{\usebibmacro{name:family-given}
+        {\namepartfamily}
+        {\namepartgiven}
+        {\namepartprefix}
+        {\namepartsuffix}%
+      \usebibmacro{name:andothers}%
+    }}
+}
+\declaremynameformat{author}
+
+\AtEveryBibitem{%
+  \clearfield{volume}
+  \clearfield{number}
+  \clearfield{series}
+  \clearfield{urlyear}
+
+  \ifentrytype{book}{%
+      \declaremynameformat{editor}
+      }{%
+          \ifentrytype{collection}{%
+              \declaremynameformat{editor}
+              }{%
+                  \clearfield{publisher}
+                  \clearlist{publisher}
+                  \clearlist{address}
+                  \clearfield{location}
+                  \clearlist{location}
+              }
+      }
+}
+
+\DeclareFieldFormat[article,incollection,inproceedings]{title}{#1}
+
+\DeclareFieldFormat{url}{\addcolon\space[\href{#1}{Link}]}
+
+\renewcommand{\finentrypunct}{}
+
+
+
 
