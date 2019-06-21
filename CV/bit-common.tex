@@ -97,6 +97,9 @@
 \patchcmd{\bibsetup}{\interlinepenalty=5000}{\interlinepenalty=10000}{}{}
 
 \DeclareSortingTemplate{cv}{%
+  \sort[sortcase=false,direction=descending]{%
+      \field{pubstate}
+  }
   \sort[direction=descending]{%
     \field{sortyear}
     \field{year}

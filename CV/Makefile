@@ -47,7 +47,7 @@ github:
 	git checkout github 
 	# may need more than just the latest commit
 	# git cherry-pick master
-	git checkout master -- Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
+	git checkout master -- Makefile docker-compose.yml data/docker-texlive/Dockerfile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
 	# for tex in CV_en*.tex bit-*.tex; do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' ${tex}; done
 	for tex in $(TEX_SRCS) $(TEX_XTRA_SRCS); do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' $${tex}; done
 	sed -i '/\(file = \)\|\(mendeley-groups =\)\|\(mendeley-tags =\)/d' $(BIB_SRCS)
