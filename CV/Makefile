@@ -51,7 +51,7 @@ github:
 	# for tex in CV_en*.tex bit-*.tex; do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' ${tex}; done
 	for tex in $(TEX_SRCS) $(TEX_XTRA_SRCS); do sed -i -r -e '/^[[:space:]]*%/ d' -e 's/([^\\])%.+$$/\1/'  -e 's/\\endinput/%endinput/' -e '/%endinput/ q' $${tex}; done
 	sed -i '/\(file = \)\|\(mendeley-groups =\)\|\(mendeley-tags =\)/d' $(BIB_SRCS)
-	git add Makefile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
+	git add Makefile docker-compose.yml data/docker-texlive/Dockerfile $(PDF_TARGETS) $(TEX_SRCS) $(TEX_XTRA_SRCS) $(BIB_SRCS) $(OTR_SRCS)
 	#git commit -m "CV/ - sync with master"
 	#git push
 	#git checkout master 
